@@ -1,0 +1,38 @@
+@use "@/styles/mixins"
+
+.header
+  position: sticky
+  top: 0
+  z-index: 100
+  background: var(--color-bg)
+  border-bottom: 1px solid var(--color-border)
+  height: 64px
+
+.inner
+  @include mixins.container
+  height: 100%
+  display: flex
+  align-items: center
+  gap: var(--space-8)
+
+.logo
+  font-size: var(--text-h3)
+  font-weight: 500
+  flex-shrink: 0
+
+.nav
+  display: flex
+  gap: var(--space-8)
+  flex: 1
+
+.navLink
+  font-size: var(--text-body)
+  color: var(--color-text-muted)
+
+.actions
+  display: flex
+  gap: var(--space-4)
+  align-items: center
+
+.iconBtn
+  width: 80px
