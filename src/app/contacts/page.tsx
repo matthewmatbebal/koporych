@@ -1,3 +1,4 @@
+import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
 import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import styles from './page.module.sass'
 
@@ -15,13 +16,7 @@ export default function ContactsPage() {
       </section>
 
       <section className={styles.section}>
-        <div className={styles.form}>
-          <WireBlock label="Поле: E-mail" height={44} />
-          <WireBlock label="Поле: Имя" height={44} />
-          <WireBlock label="Поле: Ваш Телефон" height={44} />
-          <WireBlock label="Поле: Вопрос (textarea)" height={96} />
-          <WireBlock label="Кнопка: Отправить" height={44} />
-        </div>
+        <ContactForm showTitle={false} />
       </section>
 
     </div>

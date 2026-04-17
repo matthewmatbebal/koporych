@@ -11,12 +11,12 @@ export default function HomePage() {
       </section>
 
       <section className={styles.section}>
-        <WireBlock label="Заголовок: Избранные товары" height={48} />
         <div className={styles.categories}>
           <WireBlock label="Рассыпной" height={42} />
           <WireBlock label="Пирамидки" height={42} />
           <WireBlock label="Развес" height={42} />
         </div>
+        <WireBlock label="Заголовок: Избранные товары" height={48} />
         <div className={styles.grid3}>
           {[1, 2, 3].map(i => (
             <Link key={i} href={`/catalog/product-${i}`} className={styles.card}>
@@ -26,9 +26,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.sectionMuted}>
-        <WireBlock label="[СКРЫТО] С нами сотрудничают — логотипы партнёров (заготовка, не видна посетителям)" height={120} />
-      </section>
+
 
       <section className={styles.contacts}>
           <WireBlock className={styles.photo} label="Фото" height={240} />
@@ -38,6 +36,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className={styles.sectionMuted}>
+        <WireBlock label="[СКРЫТО] С нами сотрудничают — логотипы партнёров (заготовка, не видна посетителям)" height={120} />
+      </section>
     </div>
   )
 }
