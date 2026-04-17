@@ -29,11 +29,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
       </div>
-      <WireBlock label="Заголовок: Похожие товары" height={40} />
-      <div className={styles.related}>
-        <WireBlock label="Похожий товар 1: фото · название · цена" height={240} />
-        <WireBlock label="Похожий товар 2: фото · название · цена" height={240} />
-        <WireBlock label="Похожий товар 3: фото · название · цена" height={240} />
+      <div className={styles.formTitle}>
+        <WireBlock label="Не нашли что искали?" height={40} />
+        <WireBlock label="Ответим на любые вопросы и поможем индивидуально подобрать чай" height={24} />
+      </div>
+      <div className={styles.form}>
+        <WireBlock label="Поле: E-mail" height={44} />
+        <WireBlock label="Поле: Имя" height={44} />
+        <WireBlock label="Поле: Ваш телефон" height={44} />
+        <WireBlock label="Поле: Вопрос (textarea)" height={96} />
+        <WireBlock label="Кнопка: Отправить" height={44} />
       </div>
     </div>
   )

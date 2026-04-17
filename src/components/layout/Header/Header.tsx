@@ -5,8 +5,8 @@ import styles from './Header.module.sass'
 const NAV_LINKS = [
   { href: '/catalog', label: 'Каталог' },
   { href: '/about', label: 'О нас' },
-  { href: '/delivery', label: 'Доставка и оплата' },
   { href: '/cooperation', label: 'Сотрудничество' },
+  { href: '/delivery', label: 'Доставка и оплата' },
   { href: '/contacts', label: 'Контакты' },
 ] as const
 

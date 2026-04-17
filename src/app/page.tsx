@@ -13,10 +13,9 @@ export default function HomePage() {
       <section className={styles.section}>
         <WireBlock label="Заголовок: Избранные товары" height={48} />
         <div className={styles.categories}>
-          <WireBlock label="Все" height={36} />
-          <WireBlock label="Рассыпной" height={36} />
-          <WireBlock label="Пирамидки" height={36} />
-          <WireBlock label="Развес" height={36} />
+          <WireBlock label="Рассыпной" height={42} />
+          <WireBlock label="Пирамидки" height={42} />
+          <WireBlock label="Развес" height={42} />
         </div>
         <div className={styles.grid3}>
           {[1, 2, 3].map(i => (
@@ -32,8 +31,11 @@ export default function HomePage() {
       </section>
 
       <section className={styles.contacts}>
-        <WireBlock label="Телефон · E-mail (без формы обратной связи)" height={200} />
-        <WireBlock label="Телефон · E-mail (без формы обратной связи)" height={200} />
+          <WireBlock className={styles.photo} label="Фото" height={240} />
+        <div className={styles.contactsInner}>
+          <WireBlock label="Описание" height={180} />
+          <WireBlock label="О нас" height={44} className={styles.button} />
+        </div>
       </section>
 
     </div>

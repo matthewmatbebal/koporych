@@ -31,8 +31,9 @@ export default function AboutPage() {
       <section className={styles.section}>
         <WireBlock label="Заголовок: Напишите нам" height={48} />
         <div className={styles.form}>
-          <WireBlock label="Поле: Имя" height={44} />
           <WireBlock label="Поле: E-mail" height={44} />
+          <WireBlock label="Поле: Имя" height={44} />
+          <WireBlock label="Поле: Ваш Телефон" height={44} />
           <WireBlock label="Поле: Вопрос (textarea)" height={96} />
           <WireBlock label="Кнопка: Отправить" height={44} />
         </div>

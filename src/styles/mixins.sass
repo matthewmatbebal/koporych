@@ -1,4 +1,10 @@
-=container
+@mixin container
   max-width: var(--container-max)
   margin: 0 auto
   width: 100%
+
+@mixin flex-center($direction: row, $justify: center, $align: center)
+  display: flex
+  flex-direction: $direction
+  justify-content: $justify
+  align-items: $align

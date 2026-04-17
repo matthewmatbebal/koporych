@@ -7,7 +7,6 @@ export default function CatalogPage() {
     <div className={styles.page}>
       <WireBlock label="Заголовок: Каталог" height={64} />
       <div className={styles.categories}>
-        <WireBlock label="Все" height={36} />
         <WireBlock label="Рассыпной" height={36} />
         <WireBlock label="Пирамидки" height={36} />
         <WireBlock label="Развес" height={36} />

@@ -39,6 +39,18 @@
 .contacts
   @include mixins.container
   display: flex
+  flex-direction: row
   gap: var(--space-4)
   padding: var(--space-16) 0
-  width: 100%
+
+  .photo
+    width: 50%
+
+  .contactsInner
+    @include mixins.flex-center(column, start, start)
+    gap: var(--space-4)
+    width: 100%
+
+  .button
+    align-self: start
+    max-width: 300px

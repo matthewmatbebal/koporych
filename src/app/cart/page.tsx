@@ -17,9 +17,9 @@ export default function CartPage() {
       </div>
       <WireBlock label="Заголовок: Оформление заказа" height={48} />
       <div className={styles.form}>
+        <WireBlock label="Поле: E-mail" height={44} />
         <WireBlock label="Поле: ФИО или Компания" height={44} />
         <WireBlock label="Поле: Телефон" height={44} />
-        <WireBlock label="Поле: E-mail" height={44} />
         <WireBlock label="Поле: Способ доставки (выпадающий список + поле адреса)" height={80} />
         <WireBlock label="Поле: Способ оплаты (выпадающий список)" height={44} />
         <WireBlock label="Поле: Комментарий к заказу (необязательно, textarea)" height={80} />
