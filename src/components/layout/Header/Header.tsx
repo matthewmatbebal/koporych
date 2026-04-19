@@ -27,7 +27,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(styles.navLink, isActive && styles.navLinkActive)}
+                className={cn(styles.navLink, { [styles.navLinkActive]: isActive })}
               >
                 {link.label}
               </Link>
