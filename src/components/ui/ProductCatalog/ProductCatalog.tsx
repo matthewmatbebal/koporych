@@ -38,7 +38,7 @@ export function ProductCatalog({ products, allLabel, catalogLink }: ProductCatal
         {allCategories.map(cat => (
           <button
             key={cat}
-            className={`${styles.categoryBtn} ${active === cat || (!active && !allLabel) ? styles.categoryBtnActive : ''}`}
+            className={`${styles.categoryBtn} ${active === cat ? styles.categoryBtnActive : ''}`}
             onClick={() => handleClick(cat)}
           >
             {cat}

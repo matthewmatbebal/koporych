@@ -8,28 +8,32 @@
   gap: var(--space-2)
 
 .categoryBtn
-  padding: var(--space-2) var(--space-4)
-  border: 1px solid var(--color-border)
-  border-radius: var(--radius-pill)
-  background: none
+  flex: 1
+  height: var(--space-16)
+  border-radius: var(--radius-lg)
   cursor: pointer
   font-family: inherit
   font-size: var(--text-small)
-  color: var(--color-text-muted)
-  transition: border-color 0.15s, color 0.15s, background 0.15s
+  font-weight: 700
+  letter-spacing: 0.08em
+  text-transform: uppercase
+  color: var(--color-text)
+  background: var(--color-surface)
+  border: 1px solid var(--color-border)
+  transition: background 0.2s, color 0.2s, opacity 0.2s
 
   &:hover
     border-color: var(--color-accent)
     color: var(--color-accent)
 
+
 .categoryBtnActive
-  border-color: var(--color-accent)
-  background: var(--color-accent)
   color: #fff
+  border-color: transparent
+  background: linear-gradient(rgba(52, 78, 65, 0.5), rgba(52, 78, 65, 0.5)), var(--color-surface)
 
   &:hover
-    border-color: var(--color-accent-hover)
-    background: var(--color-accent-hover)
+    background: linear-gradient(rgba(52, 78, 65, 0.4), rgba(52, 78, 65, 0.4)), var(--color-surface)
 
 .grid
   display: grid
