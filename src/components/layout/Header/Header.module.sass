@@ -11,13 +11,14 @@
 .inner
   @include mixins.container
   height: 100%
+  padding: 0 var(--space-12)
   display: flex
   align-items: center
   gap: var(--space-8)
 
 .logo
   font-size: var(--text-h3)
-  font-weight: 500
+  font-weight: 700
   flex-shrink: 0
 
 .nav
@@ -29,10 +30,42 @@
   font-size: var(--text-body)
   color: var(--color-text-muted)
 
+  &:hover
+    color: var(--color-text)
+
 .actions
   display: flex
   gap: var(--space-4)
   align-items: center
 
-.iconBtn
-  width: 80px
+.searchBtn
+  background: none
+  border: none
+  cursor: pointer
+  font-family: inherit
+  font-size: var(--text-body)
+  color: var(--color-text-muted)
+  padding: var(--space-2) var(--space-3)
+
+  &:hover
+    color: var(--color-text)
+
+.cartBtn
+  display: flex
+  align-items: center
+  gap: var(--space-2)
+  font-size: var(--text-body)
+  font-weight: 700
+  color: var(--color-text)
+
+.cartCount
+  background: var(--color-accent)
+  color: #fff
+  border-radius: var(--radius-pill)
+  width: 20px
+  height: 20px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  font-size: var(--text-micro)
+  font-weight: 700

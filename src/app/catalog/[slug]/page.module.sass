@@ -26,15 +26,52 @@
   flex-direction: column
   gap: var(--space-4)
 
+.weight
+  font-size: var(--text-small)
+  color: var(--color-text-muted)
+
+.price
+  font-size: var(--text-h1)
+  font-weight: 700
+  color: var(--color-accent)
+
 .addToCart
   display: flex
   gap: var(--space-3)
+  align-items: center
+
+.counter
+  display: flex
+  align-items: center
+  gap: var(--space-2)
+  border: 1px solid var(--color-border)
+  border-radius: var(--radius-md)
+  padding: 0 var(--space-2)
+  height: var(--button-height)
+
+.counterBtn
+  background: none
+  border: none
+  cursor: pointer
+  font-size: var(--text-h3)
+  color: var(--color-text)
+  width: 28px
+  display: flex
+  align-items: center
+  justify-content: center
+
+  &:hover
+    color: var(--color-accent)
+
+.counterVal
+  font-weight: 700
+  min-width: 24px
+  text-align: center
 
 .formTitle
   @include mixins.flex-center(column, center, center)
   gap: var(--space-3)
-  align-self: center
-  width: 100%
+  text-align: center
 
 .form
   display: flex
@@ -42,5 +79,4 @@
   gap: var(--space-2)
   padding: var(--space-4)
   background-color: var(--color-surface)
-  border-radius: var(--space-4)
-
+  border-radius: var(--radius-lg)

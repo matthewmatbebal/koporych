@@ -1,5 +1,4 @@
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
-import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import styles from './page.module.sass'
 
 export default function ContactsPage() {
@@ -7,12 +6,25 @@ export default function ContactsPage() {
     <div className={styles.page}>
 
       <section className={styles.section}>
-        <WireBlock label="Заголовок: Мы всегда на связи" height={48} />
+        <h2>Мы всегда на связи</h2>
         <div className={styles.contacts}>
-          <WireBlock label="Телефон" height={80} />
-          <WireBlock label="Email" height={80} />
+          <div className={styles.contactItem}>
+            <span className={styles.contactLabel}>Телефон</span>
+            <a href="tel:+79001234567" className={styles.contactValue}>+7 (900) 123-45-67</a>
+          </div>
+          <div className={styles.contactItem}>
+            <span className={styles.contactLabel}>Email</span>
+            <a href="mailto:hello@koporych.ru" className={styles.contactValue}>hello@koporych.ru</a>
+          </div>
+          <div className={styles.contactItem}>
+            <span className={styles.contactLabel}>Соцсети</span>
+            <div className={styles.socials}>
+              <a href="#" className={styles.socialLink}>ВКонтакте</a>
+              <a href="#" className={styles.socialLink}>Telegram</a>
+              <a href="#" className={styles.socialLink}>WhatsApp</a>
+            </div>
+          </div>
         </div>
-        <WireBlock label="Соцсети" height={80} />
       </section>
 
       <section className={styles.section}>

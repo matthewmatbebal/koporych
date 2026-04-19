@@ -21,12 +21,44 @@
   gap: var(--space-6)
   padding: var(--space-6)
 
-.contacts
-  display: flex
-  flex-direction: row
-  gap: var(--space-6)
-
 .twoCol
   display: grid
   grid-template-columns: 2fr 1fr
-  gap: var(--space-6)
+  gap: var(--space-8)
+  align-items: start
+
+.companyText
+  display: flex
+  flex-direction: column
+  gap: var(--space-4)
+
+.contacts
+  display: flex
+  flex-direction: row
+  gap: var(--space-8)
+
+.contactItem
+  display: flex
+  flex-direction: column
+  gap: var(--space-1)
+
+.contactLabel
+  font-size: var(--text-small)
+  color: var(--color-text-muted)
+
+.contactValue
+  font-size: var(--text-h3)
+  font-weight: 700
+
+  &:hover
+    color: var(--color-accent)
+
+.socials
+  display: flex
+  gap: var(--space-4)
+
+.socialLink
+  color: var(--color-text-muted)
+
+  &:hover
+    color: var(--color-accent)

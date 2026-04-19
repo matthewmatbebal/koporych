@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import styles from './Header.module.sass'
 
 const NAV_LINKS = [
@@ -23,9 +22,9 @@ export function Header() {
           ))}
         </nav>
         <div className={styles.actions}>
-          <WireBlock label="Поиск" height={36} className={styles.iconBtn} />
-          <Link href="/cart">
-            <WireBlock label="Корзина 0" height={36} className={styles.iconBtn} />
+          <button className={styles.searchBtn}>Поиск</button>
+          <Link href="/cart" className={styles.cartBtn}>
+            Корзина <span className={styles.cartCount}>0</span>
           </Link>
         </div>
       </div>

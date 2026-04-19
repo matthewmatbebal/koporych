@@ -11,35 +11,39 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <div className={styles.page}>
       <div className={styles.product}>
         <div className={styles.gallery}>
-          <WireBlock label="Карусель фото товара (основное фото)" height={400} />
+          <WireBlock label="Фото" height={400} />
           <div className={styles.thumbs}>
-            <WireBlock label="Фото 1" height={72} />
-            <WireBlock label="Фото 2" height={72} />
-            <WireBlock label="Фото 3" height={72} />
+            <WireBlock label="Фото" height={72} />
+            <WireBlock label="Фото" height={72} />
+            <WireBlock label="Фото" height={72} />
           </div>
         </div>
         <div className={styles.info}>
-          <WireBlock label="Название товара (H1)" height={56} />
-          <WireBlock label="Описание товара — полный текст" height={160} />
-          <WireBlock label="Вес: 100 г" height={40} />
-          <WireBlock label="Цена: 000 ₽" height={48} />
+          <h1>Иван-чай классический</h1>
+          <p>Рассыпной иван-чай ручного сбора из Ленинградской области. Ферментирован по традиционному рецепту. Насыщенный вкус с цветочными нотками, бодрящий аромат. Без кофеина, богат витаминами C и B.</p>
+          <p className={styles.weight}>Вес: 100 г</p>
+          <p className={styles.price}>450 ₽</p>
           <div className={styles.addToCart}>
-            <WireBlock label="Счётчик: − 1 +" height={44} />
-            <WireBlock label="Кнопка: Добавить в корзину" height={44} />
+            <div className={styles.counter}>
+              <button className={styles.counterBtn}>−</button>
+              <span className={styles.counterVal}>1</span>
+              <button className={styles.counterBtn}>+</button>
+            </div>
+            <button className="btn">Добавить в корзину</button>
           </div>
         </div>
       </div>
       <div className={styles.formTitle}>
-        <WireBlock label="Не нашли что искали?" height={40} />
-        <WireBlock label="Ответим на любые вопросы и поможем индивидуально подобрать чай" height={24} />
+        <h2>Не нашли что искали?</h2>
+        <p>Ответим на любые вопросы и поможем подобрать чай</p>
       </div>
-      <div className={styles.form}>
-        <WireBlock label="Поле: E-mail" height={44} />
-        <WireBlock label="Поле: Имя" height={44} />
-        <WireBlock label="Поле: Ваш телефон" height={44} />
-        <WireBlock label="Поле: Вопрос (textarea)" height={96} />
-        <WireBlock label="Кнопка: Отправить" height={44} />
-      </div>
+      <form className={styles.form}>
+        <input type="email" placeholder="E-mail" />
+        <input type="text" placeholder="Имя" />
+        <input type="tel" placeholder="Ваш телефон" />
+        <textarea placeholder="Ваш вопрос" rows={4} />
+        <button type="submit" className="btn">Отправить</button>
+      </form>
     </div>
   )
 }
