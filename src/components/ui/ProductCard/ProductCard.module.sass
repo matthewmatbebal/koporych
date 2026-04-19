@@ -1,0 +1,57 @@
+.card
+  display: flex
+  flex-direction: column
+  border-radius: var(--radius-lg)
+  overflow: hidden
+  background: var(--color-surface)
+  border: 1px solid var(--color-border)
+  transition: transform 0.2s, box-shadow 0.2s
+
+  &:hover
+    transform: translateY(-3px)
+    box-shadow: 0 12px 32px rgba(52, 78, 65, 0.1)
+
+.cardPhoto
+  position: relative
+  aspect-ratio: 4 / 3
+  overflow: hidden
+
+.cardTag
+  position: absolute
+  top: var(--space-3)
+  left: var(--space-3)
+  background: var(--color-bg)
+  color: var(--color-text)
+  font-size: var(--text-micro)
+  font-weight: 700
+  letter-spacing: 0.08em
+  text-transform: uppercase
+  padding: var(--space-1) var(--space-3)
+  border-radius: var(--radius-pill)
+
+.cardBody
+  padding: var(--space-4) var(--space-4) var(--space-6)
+  display: flex
+  flex-direction: column
+  gap: var(--space-1)
+  flex: 1
+
+.cardName
+  font-size: var(--text-h3)
+  font-weight: 700
+
+.cardSub
+  color: var(--color-text-muted)
+  font-size: var(--text-small)
+
+.cardFooter
+  display: flex
+  align-items: center
+  justify-content: space-between
+  margin-top: auto
+  padding-top: var(--space-4)
+
+.price
+  font-size: var(--text-h2)
+  font-weight: 700
+  color: var(--color-text)
