@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
+import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
 import styles from './page.module.sass'
 
 interface ProductPageProps {
@@ -50,13 +51,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <h2>Не нашли что искали?</h2>
         <p>Ответим на любые вопросы и поможем подобрать чай</p>
       </div>
-      <form className={styles.form}>
-        <input type="email" placeholder="E-mail" />
-        <input type="text" placeholder="Имя" />
-        <input type="tel" placeholder="Ваш телефон" />
-        <textarea placeholder="Ваш вопрос" rows={4} />
-        <button type="submit" className="btn">Отправить</button>
-      </form>
+      <ContactForm showTitle={false} />
 
     </div>
   )
