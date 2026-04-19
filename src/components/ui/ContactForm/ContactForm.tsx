@@ -21,7 +21,7 @@ export function ContactForm({ showTitle = true }: { showTitle?: boolean }) {
           <textarea placeholder=" " rows={4} className={styles.input} />
           <span className={styles.label}>Ваш вопрос</span>
         </label>
-        <button type="submit" className="btn">Отправить</button>
+        <button type="submit" className={`btn ${styles.submit}`}>Отправить</button>
       </form>
     </>
   )

@@ -1,0 +1,89 @@
+.field
+  position: relative
+  display: block
+
+.trigger
+  width: 100%
+  padding-top: var(--space-8)
+  padding-bottom: var(--space-2)
+  padding-left: var(--space-2)
+  padding-right: var(--space-6)
+  background: transparent
+  border: none
+  border-bottom: 1px solid var(--color-border)
+  border-radius: 0
+  text-align: left
+  font-family: inherit
+  font-size: var(--text-body)
+  color: var(--color-text)
+  cursor: pointer
+  transition: border-color 0.15s
+  outline: none
+
+  .isOpen &
+    border-bottom-color: var(--color-accent)
+
+.triggerValue
+  display: block
+  line-height: 1.2
+  height: 1.2em
+
+.label
+  position: absolute
+  left: var(--space-2)
+  top: 50%
+  transform: translateY(-50%)
+  font-size: var(--text-body)
+  color: var(--color-text-muted)
+  transition: top 0.15s, transform 0.15s, font-size 0.15s, color 0.15s
+  pointer-events: none
+
+.hasValue .label,
+.isOpen .label
+  top: 10px
+  transform: none
+  font-size: var(--text-micro)
+  letter-spacing: 0.04em
+  color: var(--color-accent)
+
+.arrow
+  position: absolute
+  right: var(--space-2)
+  top: 50%
+  transform: translateY(-50%)
+  font-size: var(--text-small)
+  color: var(--color-text-muted)
+  pointer-events: none
+  transition: transform 0.15s, color 0.15s
+
+  .isOpen &
+    transform: translateY(-50%) rotate(180deg)
+    color: var(--color-accent)
+
+.dropdown
+  position: absolute
+  top: calc(100% + 4px)
+  left: 0
+  right: 0
+  background: var(--color-bg)
+  border: 1px solid var(--color-border)
+  border-radius: var(--radius-md)
+  box-shadow: 0 8px 24px rgba(52, 78, 65, 0.1)
+  z-index: 10
+  list-style: none
+  padding: var(--space-2) 0
+  margin: 0
+
+.option
+  padding: var(--space-3) var(--space-4)
+  font-size: var(--text-body)
+  color: var(--color-text)
+  cursor: pointer
+  transition: background 0.1s, color 0.1s
+
+  &:hover
+    background: var(--color-surface)
+
+.optionActive
+  color: var(--color-accent)
+  font-weight: 700

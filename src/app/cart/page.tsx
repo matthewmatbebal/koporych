@@ -1,4 +1,5 @@
 import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
+import { CustomSelect } from '@/components/ui/CustomSelect/CustomSelect'
 import styles from './page.module.sass'
 
 const CART_ITEMS = [
@@ -43,25 +44,37 @@ export default function CartPage() {
       <div className={styles.orderSection}>
         <h2>Оформление заказа</h2>
         <form className={styles.form}>
-          <input type="email" placeholder="E-mail" />
-          <input type="text" placeholder="ФИО или Компания" />
-          <input type="tel" placeholder="Телефон" />
-          <select>
-            <option value="">Способ доставки</option>
-            <option>Почта России</option>
-            <option>СДЭК</option>
-            <option>Яндекс.Доставка</option>
-            <option>Самовывоз</option>
-          </select>
-          <input type="text" placeholder="Адрес доставки" />
-          <select>
-            <option value="">Способ оплаты</option>
-            <option>Банковская карта</option>
-            <option>Перевод на счёт</option>
-            <option>Наличные при самовывозе</option>
-          </select>
-          <textarea placeholder="Комментарий к заказу (необязательно)" rows={3} />
-          <button type="submit" className="btn">Оформить заказ</button>
+          <label className={styles.field}>
+            <input type="email" placeholder=" " className={styles.input} />
+            <span className={styles.label}>E-mail</span>
+          </label>
+          <label className={styles.field}>
+            <input type="text" placeholder=" " className={styles.input} />
+            <span className={styles.label}>ФИО или Компания</span>
+          </label>
+          <label className={styles.field}>
+            <input type="tel" placeholder=" " className={styles.input} />
+            <span className={styles.label}>Телефон</span>
+          </label>
+          <CustomSelect
+            label="Способ доставки"
+            options={['Почта России', 'СДЭК', 'Яндекс.Доставка', 'Самовывоз']}
+            name="delivery"
+          />
+          <label className={styles.field}>
+            <input type="text" placeholder=" " className={styles.input} />
+            <span className={styles.label}>Адрес доставки</span>
+          </label>
+          <CustomSelect
+            label="Способ оплаты"
+            options={['Банковская карта', 'Перевод на счёт', 'Наличные при самовывозе']}
+            name="payment"
+          />
+          <label className={`${styles.field} ${styles.fieldTextarea}`}>
+            <textarea placeholder=" " rows={3} className={styles.input} />
+            <span className={styles.label}>Комментарий к заказу (необязательно)</span>
+          </label>
+          <button type="submit" className={`btn ${styles.submit}`}>Оформить заказ</button>
         </form>
       </div>
 
