@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import { FeaturedSection } from './FeaturedSection'
 import styles from './page.module.sass'
@@ -8,16 +9,9 @@ export default function HomePage() {
     <div className={styles.page}>
 
       <section className={styles.hero}>
-        <WireBlock label="Фото" height={640} className={styles.heroBg} />
+        <Image src="/images/banner.jpg" alt="Копорыч" fill className={styles.heroBg} priority />
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
-          <p className={styles.heroEyebrow}>
-            <span>Иван-чай</span>
-            <span className={styles.eyebrowDivider}>—</span>
-            <span>Ручной сбор</span>
-            <span className={styles.eyebrowDivider}>—</span>
-            <span>Россия</span>
-          </p>
           <h1 className={styles.heroTitle}>Копорыч</h1>
           <p className={styles.heroSub}>Традиционный русский чай<br />из экологически чистых мест</p>
           <Link href="/catalog" className={styles.heroBtn}>Смотреть каталог</Link>
