@@ -4,7 +4,9 @@
   position: sticky
   top: 0
   z-index: 100
-  background: var(--color-bg)
+  background: rgba(244, 241, 233, 0.92)
+  backdrop-filter: blur(12px)
+  -webkit-backdrop-filter: blur(12px)
   border-bottom: 1px solid var(--color-border)
   height: 64px
 
@@ -17,9 +19,12 @@
   gap: var(--space-8)
 
 .logo
-  font-size: var(--text-h3)
-  font-weight: 700
+
+  font-size: 22px
+  font-weight: 600
+  letter-spacing: 0.06em
   flex-shrink: 0
+  color: var(--color-text)
 
 .nav
   display: flex
@@ -27,11 +32,17 @@
   flex: 1
 
 .navLink
-  font-size: var(--text-body)
+  font-size: var(--text-small)
+  letter-spacing: 0.04em
   color: var(--color-text-muted)
+  transition: color 0.15s
 
   &:hover
     color: var(--color-text)
+
+  &.navLinkActive
+    color: var(--color-text)
+    font-weight: 700
 
 .actions
   display: flex
@@ -43,9 +54,11 @@
   border: none
   cursor: pointer
   font-family: inherit
-  font-size: var(--text-body)
+  font-size: var(--text-small)
+  letter-spacing: 0.04em
   color: var(--color-text-muted)
   padding: var(--space-2) var(--space-3)
+  transition: color 0.15s
 
   &:hover
     color: var(--color-text)
@@ -54,18 +67,23 @@
   display: flex
   align-items: center
   gap: var(--space-2)
-  font-size: var(--text-body)
+  font-size: var(--text-small)
   font-weight: 700
+  letter-spacing: 0.04em
   color: var(--color-text)
+  transition: color 0.15s
+
+  &:hover
+    color: var(--color-accent)
 
 .cartCount
   background: var(--color-accent)
   color: #fff
   border-radius: var(--radius-pill)
-  width: 20px
-  height: 20px
+  width: 18px
+  height: 18px
   display: inline-flex
   align-items: center
   justify-content: center
-  font-size: var(--text-micro)
+  font-size: 10px
   font-weight: 700

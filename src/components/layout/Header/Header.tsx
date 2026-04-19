@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import styles from './Header.module.sass'
 
 const NAV_LINKS = [
@@ -10,13 +13,19 @@ const NAV_LINKS = [
 ] as const
 
 export function Header() {
+  const pathname = usePathname()
+
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>КОПОРЫЧ</Link>
         <nav className={styles.nav}>
           {NAV_LINKS.map(link => (
-            <Link key={link.href} href={link.href} className={styles.navLink}>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`${styles.navLink} ${pathname.startsWith(link.href) ? styles.navLinkActive : ''}`}
+            >
               {link.label}
             </Link>
           ))}

@@ -5,7 +5,13 @@
   padding: var(--space-12) 0
   display: flex
   flex-direction: column
-  gap: var(--space-6)
+  gap: var(--space-8)
+
+// ─── Секция товаров ───────────────────────────────────
+.cartSection
+  display: flex
+  flex-direction: column
+  gap: var(--space-4)
 
 .items
   display: flex
@@ -19,11 +25,14 @@
   padding: var(--space-3)
   background: var(--color-surface)
   border-radius: var(--radius-md)
+  border: 1px solid var(--color-border)
 
 .itemPhoto
   width: 72px
+  height: 72px
   flex-shrink: 0
   border-radius: var(--radius-sm)
+  overflow: hidden
 
 .itemInfo
   flex: 1
@@ -69,7 +78,7 @@
 .itemPrice
   font-size: var(--text-h3)
   font-weight: 700
-  color: var(--color-accent)
+  color: var(--color-text)
   min-width: 80px
   text-align: right
 
@@ -85,22 +94,35 @@
 
 .total
   display: flex
-  align-items: center
-  gap: var(--space-4)
-  font-size: var(--text-h3)
+  align-items: baseline
+  justify-content: space-between
+  padding: var(--space-4)
+  border-top: 1px solid var(--color-border)
+
+  span
+    color: var(--color-text-muted)
 
   strong
     font-size: var(--text-h2)
-    color: var(--color-accent)
+    font-weight: 700
+    color: var(--color-text)
+
+// ─── Секция оформления ────────────────────────────────
+.orderSection
+  display: flex
+  flex-direction: column
+  gap: var(--space-6)
+  padding: var(--space-8)
+  background: var(--color-surface)
+  border-radius: var(--radius-lg)
+  border: 1px solid var(--color-border)
 
 .form
   display: flex
   flex-direction: column
-  gap: var(--space-2)
-  padding: var(--space-4)
-  background-color: var(--color-surface)
-  border-radius: var(--radius-lg)
+  gap: var(--space-3)
 
+// ─── Пустая корзина ───────────────────────────────────
 .emptyState
   display: flex
   flex-direction: column

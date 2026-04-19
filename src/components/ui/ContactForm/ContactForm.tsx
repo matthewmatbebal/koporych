@@ -5,10 +5,22 @@ export function ContactForm({ showTitle = true }: { showTitle?: boolean }) {
     <>
       {showTitle && <h2>Напишите нам</h2>}
       <form className={styles.form}>
-        <input type="email" placeholder="E-mail" />
-        <input type="text" placeholder="Имя" />
-        <input type="tel" placeholder="Ваш телефон" />
-        <textarea placeholder="Ваш вопрос" rows={4} />
+        <label className={styles.field}>
+          <input type="email" placeholder=" " className={styles.input} />
+          <span className={styles.label}>E-mail</span>
+        </label>
+        <label className={styles.field}>
+          <input type="text" placeholder=" " className={styles.input} />
+          <span className={styles.label}>Имя</span>
+        </label>
+        <label className={styles.field}>
+          <input type="tel" placeholder=" " className={styles.input} />
+          <span className={styles.label}>Телефон</span>
+        </label>
+        <label className={`${styles.field} ${styles.fieldTextarea}`}>
+          <textarea placeholder=" " rows={4} className={styles.input} />
+          <span className={styles.label}>Ваш вопрос</span>
+        </label>
         <button type="submit" className="btn">Отправить</button>
       </form>
     </>

@@ -16,7 +16,7 @@ export function Footer() {
         <div className={styles.top}>
           <div className={styles.brand}>
             <Link href="/" className={styles.logo}>КОПОРЫЧ</Link>
-            <p>Иван-чай ручной сборки</p>
+            <p className={styles.tagline}>Иван-чай ручной сборки<br />из экологически чистых мест России</p>
           </div>
           <nav className={styles.nav}>
             {NAV_LINKS.map(link => (
@@ -32,6 +32,11 @@ export function Footer() {
         </div>
         <div className={styles.bottom}>
           <p>© 2024 Копорыч. Все права защищены.</p>
+          <div className={styles.socials}>
+            <a href="https://vk.com/koporych" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>ВКонтакте</a>
+            <a href="https://t.me/koporych" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>Telegram</a>
+            <a href="https://wa.me/79001234567" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>WhatsApp</a>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import styles from './page.module.sass'
 
@@ -9,6 +10,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const { slug: _slug } = await params
   return (
     <div className={styles.page}>
+
+      <nav className={styles.breadcrumbs}>
+        <Link href="/">Главная</Link>
+        <span className={styles.breadcrumbSep}>/</span>
+        <Link href="/catalog">Каталог</Link>
+        <span className={styles.breadcrumbSep}>/</span>
+        <span>Иван-чай классический</span>
+      </nav>
+
       <div className={styles.product}>
         <div className={styles.gallery}>
           <WireBlock label="Фото" height={400} />
@@ -29,10 +39,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <span className={styles.counterVal}>1</span>
               <button className={styles.counterBtn}>+</button>
             </div>
-            <button className="btn">Добавить в корзину</button>
+            <button className={`btn ${styles.addBtn}`}>Добавить в корзину</button>
           </div>
         </div>
       </div>
+
+      <div className={styles.divider} />
+
       <div className={styles.formTitle}>
         <h2>Не нашли что искали?</h2>
         <p>Ответим на любые вопросы и поможем подобрать чай</p>
@@ -44,6 +57,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <textarea placeholder="Ваш вопрос" rows={4} />
         <button type="submit" className="btn">Отправить</button>
       </form>
+
     </div>
   )
 }
