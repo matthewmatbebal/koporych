@@ -21,15 +21,18 @@ export function Header() {
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>КОПОРЫЧ</Link>
         <nav className={styles.nav}>
-          {NAV_LINKS.map(link => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(styles.navLink, { [styles.navLinkActive]: pathname.startsWith(link.href) })}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map(link => {
+            const isActive = pathname.startsWith(link.href)
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(styles.navLink, isActive && styles.navLinkActive)}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
         </nav>
         <div className={styles.actions}>
           <button className={styles.searchBtn}>Поиск</button>
