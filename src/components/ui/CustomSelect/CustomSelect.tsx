@@ -1,5 +1,6 @@
 'use client'
 
+import cn from 'classnames'
 import { useState, useRef, useEffect } from 'react'
 import styles from './CustomSelect.module.sass'
 
@@ -32,7 +33,7 @@ export function CustomSelect({ label, options, name }: CustomSelectProps) {
   return (
     <div
       ref={ref}
-      className={`${styles.field} ${value ? styles.hasValue : ''} ${open ? styles.isOpen : ''}`}
+      className={cn(styles.field, { [styles.hasValue]: value, [styles.isOpen]: open })}
     >
       <input type="hidden" name={name} value={value} />
       <button type="button" className={styles.trigger} onClick={() => setOpen(o => !o)}>
@@ -45,7 +46,7 @@ export function CustomSelect({ label, options, name }: CustomSelectProps) {
           {options.map(opt => (
             <li
               key={opt}
-              className={`${styles.option} ${opt === value ? styles.optionActive : ''}`}
+              className={cn(styles.option, { [styles.optionActive]: opt === value })}
               onClick={() => select(opt)}
             >
               {opt}

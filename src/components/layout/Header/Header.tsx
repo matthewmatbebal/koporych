@@ -1,5 +1,6 @@
 'use client'
 
+import cn from 'classnames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import styles from './Header.module.sass'
@@ -24,7 +25,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`${styles.navLink} ${pathname.startsWith(link.href) ? styles.navLinkActive : ''}`}
+              className={cn(styles.navLink, { [styles.navLinkActive]: pathname.startsWith(link.href) })}
             >
               {link.label}
             </Link>

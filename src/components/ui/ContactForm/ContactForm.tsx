@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import styles from './ContactForm.module.sass'
 
 export function ContactForm({ showTitle = true }: { showTitle?: boolean }) {
@@ -17,11 +18,11 @@ export function ContactForm({ showTitle = true }: { showTitle?: boolean }) {
           <input type="tel" placeholder=" " className={styles.input} />
           <span className={styles.label}>Телефон</span>
         </label>
-        <label className={`${styles.field} ${styles.fieldTextarea}`}>
+        <label className={cn(styles.field, styles.fieldTextarea)}>
           <textarea placeholder=" " rows={4} className={styles.input} />
           <span className={styles.label}>Ваш вопрос</span>
         </label>
-        <button type="submit" className={`btn ${styles.submit}`}>Отправить</button>
+        <button type="submit" className={cn('btn', styles.submit)}>Отправить</button>
       </form>
     </>
   )

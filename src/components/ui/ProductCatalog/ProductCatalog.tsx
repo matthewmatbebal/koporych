@@ -1,5 +1,6 @@
 'use client'
 
+import cn from 'classnames'
 import Link from 'next/link'
 import { useState } from 'react'
 import { ProductCard } from '@/components/ui/ProductCard/ProductCard'
@@ -38,7 +39,7 @@ export function ProductCatalog({ products, allLabel, catalogLink }: ProductCatal
         {allCategories.map(cat => (
           <button
             key={cat}
-            className={`${styles.categoryBtn} ${active === cat ? styles.categoryBtnActive : ''}`}
+            className={cn(styles.categoryBtn, { [styles.categoryBtnActive]: active === cat })}
             onClick={() => handleClick(cat)}
           >
             {cat}

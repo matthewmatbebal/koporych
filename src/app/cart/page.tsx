@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import { CustomSelect } from '@/components/ui/CustomSelect/CustomSelect'
 import styles from './page.module.sass'
@@ -70,11 +71,11 @@ export default function CartPage() {
             options={['Банковская карта', 'Перевод на счёт', 'Наличные при самовывозе']}
             name="payment"
           />
-          <label className={`${styles.field} ${styles.fieldTextarea}`}>
+          <label className={cn(styles.field, styles.fieldTextarea)}>
             <textarea placeholder=" " rows={3} className={styles.input} />
             <span className={styles.label}>Комментарий к заказу (необязательно)</span>
           </label>
-          <button type="submit" className={`btn ${styles.submit}`}>Оформить заказ</button>
+          <button type="submit" className={cn('btn', styles.submit)}>Оформить заказ</button>
         </form>
       </div>
 

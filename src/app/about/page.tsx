@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
 import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import styles from './page.module.sass'
@@ -17,7 +18,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.missionSection}`}>
+      <section className={cn(styles.section, styles.missionSection)}>
         <div className={styles.missionInner}>
           <h2>Миссия</h2>
           <p>Мы хотим вернуть иван-чай на столы российских семей. Натуральный, без химии, собранный с любовью — такой чай когда-то пили наши предки, и мы уверены: он должен быть в каждом доме.</p>
