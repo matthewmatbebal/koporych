@@ -73,7 +73,7 @@
 // ─── Секция с товарами ────────────────────────────────
 .section
   @include mixins.container
-  padding: var(--space-24) 0
+  padding: var(--space-16) 0
   display: flex
   flex-direction: column
   gap: var(--space-8)
@@ -86,19 +86,22 @@
 // ─── Секция «О нас» ──────────────────────────────────
 .aboutSection
   @include mixins.container
-  display: grid
-  grid-template-columns: 1fr 1fr
-  gap: 0
-  padding: var(--space-24) 0
+  display: flex
+  padding-bottom: var(--space-16)
   align-items: center
 
 .aboutPhoto
+  position: relative
+  flex: 0 0 40%
+  height: 320px
   border-radius: var(--radius-lg)
+  overflow: hidden
 
 .aboutInner
   padding: var(--space-16)
   display: flex
   flex-direction: column
+  align-items: flex-start
   gap: var(--space-6)
 
 .aboutEyebrow
@@ -110,7 +113,7 @@
 // ─── Партнёры (скрыто) ───────────────────────────────
 .sectionMuted
   @include mixins.container
-  padding: var(--space-8) var(--space-12)
+  padding-bottom: var(--space-16)
   opacity: 0.35
   border: 1.5px dashed var(--color-border)
   margin: 0 auto

@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import { FeaturedSection } from './FeaturedSection'
 import styles from './page.module.sass'
 
@@ -21,7 +20,9 @@ export function HomePage() {
       <FeaturedSection />
 
       <section className={styles.aboutSection}>
-        <WireBlock label="Фото" height={480} className={styles.aboutPhoto} />
+        <div className={styles.aboutPhoto}>
+          <Image src="/images/about.jpg" alt="О нас" fill style={{ objectFit: 'cover' }} />
+        </div>
         <div className={styles.aboutInner}>
           <p className={styles.aboutEyebrow}>О нас</p>
           <h2>Мы делаем чай<br />с душой</h2>
