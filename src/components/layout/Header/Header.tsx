@@ -4,6 +4,7 @@ import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import styles from './Header.module.sass'
 
 const NAV_LINKS = [
@@ -16,9 +17,24 @@ const NAV_LINKS = [
 
 export function Header() {
   const pathname = usePathname()
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 20)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const isHome = pathname === '/'
 
   return (
-    <header className={styles.header}>
+    <header className={cn(styles.header, {
+      [styles.headerScrolled]: scrolled,
+      [styles.headerLight]: isHome && !scrolled,
+    })}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
           <Image src="/images/logo.svg" alt="" width={40} height={40} className={styles.logoIcon} />
