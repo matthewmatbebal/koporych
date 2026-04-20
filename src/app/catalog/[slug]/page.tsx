@@ -1,7 +1,8 @@
 import cn from 'classnames'
+import Image from 'next/image'
 import Link from 'next/link'
-import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
+import { GALLERY_IMAGES } from '@/lib/products'
 import styles from './page.module.sass'
 
 interface ProductPageProps {
@@ -10,6 +11,7 @@ interface ProductPageProps {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { slug: _slug } = await params
+  const [main, ...thumbs] = GALLERY_IMAGES
   return (
     <div className={styles.page}>
 
@@ -23,11 +25,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <div className={styles.product}>
         <div className={styles.gallery}>
-          <WireBlock label="Фото" height={400} />
+          <div className={styles.mainPhoto}>
+            <Image src={main!} alt="Иван-чай классический" fill style={{ objectFit: 'cover' }} />
+          </div>
           <div className={styles.thumbs}>
-            <WireBlock label="Фото" height={72} />
-            <WireBlock label="Фото" height={72} />
-            <WireBlock label="Фото" height={72} />
+            {thumbs.map(src => (
+              <div key={src} className={styles.thumb}>
+                <Image src={src} alt="" fill style={{ objectFit: 'cover' }} />
+              </div>
+            ))}
           </div>
         </div>
         <div className={styles.info}>

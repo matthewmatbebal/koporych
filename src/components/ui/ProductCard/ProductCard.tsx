@@ -1,5 +1,5 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import type { Product } from '@/lib/products'
 import styles from './ProductCard.module.sass'
 
@@ -7,7 +7,7 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <Link href={`/catalog/${product.slug}`} className={styles.card}>
       <div className={styles.cardPhoto}>
-        <WireBlock label="Фото" height="100%" />
+        <Image src={product.image} alt={product.name} fill style={{ objectFit: 'cover' }} />
         <span className={styles.cardTag}>{product.category}</span>
       </div>
       <div className={styles.cardBody}>
