@@ -1,6 +1,7 @@
 'use client'
 
 import cn from 'classnames'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import styles from './Header.module.sass'
@@ -19,7 +20,10 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.logo}>КОПОРЫЧ</Link>
+        <Link href="/" className={styles.logo}>
+          <Image src="/images/logo.svg" alt="" width={40} height={40} className={styles.logoIcon} />
+          КОПОРЫЧ
+        </Link>
         <nav className={styles.nav}>
           {NAV_LINKS.map(link => {
             const isActive = pathname.startsWith(link.href)

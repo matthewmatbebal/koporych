@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import styles from './Footer.module.sass'
 
@@ -15,7 +16,10 @@ export function Footer() {
       <div className={styles.inner}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <Link href="/" className={styles.logo}>КОПОРЫЧ</Link>
+            <Link href="/" className={styles.logo}>
+              <Image src="/images/logo.svg" alt="" width={40} height={40} />
+              КОПОРЫЧ
+            </Link>
             <p className={styles.tagline}>Иван-чай ручной сборки<br />из экологически чистых мест России</p>
           </div>
           <nav className={styles.nav}>
