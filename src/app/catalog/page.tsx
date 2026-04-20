@@ -6,7 +6,15 @@ export default function CatalogPage() {
   return (
     <div className={styles.page}>
       <h1>Каталог</h1>
-      <ProductCatalog products={PRODUCTS} allLabel="Все" />
+      <ProductCatalog
+        products={PRODUCTS}
+        categoryImages={{
+          'Рассыпной': '/images/grass.jpg',
+          'Пирамидки': '/images/pyramids.jpg',
+          'Развес': '/images/classic.jpg',
+          'Набор': '/images/sagan-dali.jpg',
+        }}
+      />
     </div>
   )
 }

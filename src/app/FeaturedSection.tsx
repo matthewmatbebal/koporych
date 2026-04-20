@@ -8,7 +8,14 @@ export function FeaturedSection() {
   return (
     <section className={styles.section}>
       <h2>Избранные товары</h2>
-      <ProductCatalog products={FEATURED} catalogLink="/catalog" />
+      <ProductCatalog
+        products={FEATURED}
+        catalogLink="/catalog"
+        categoryImages={{
+          'Рассыпной': '/images/grass.jpg',
+          'Пирамидки': '/images/pyramids.jpg',
+        }}
+      />
     </section>
   )
 }
