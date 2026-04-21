@@ -1,6 +1,6 @@
 import cn from 'classnames'
+import Image from 'next/image'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
-import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import styles from './page.module.sass'
 
 export default function AboutPage() {
@@ -9,7 +9,9 @@ export default function AboutPage() {
 
       <section className={styles.section}>
         <div className={styles.twoCol}>
-          <WireBlock label="Фото производства" height={360} />
+          <div className={styles.factoryPhoto}>
+            <Image src="/images/factory.jpg" alt="Производство" fill style={{ objectFit: 'cover' }} />
+          </div>
           <div className={styles.companyText}>
             <h2>О компании</h2>
             <p>Копорыч — небольшая семейная мастерская в Ленинградской области. Мы возрождаем традицию русского иван-чая: собираем листья кипрея вручную в экологически чистых местах, ферментируем и сушим по старинным рецептам.</p>
