@@ -1,13 +1,14 @@
+import Image from 'next/image'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
-import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
 import styles from './page.module.sass'
 
 export default function CooperationPage() {
   return (
     <div className={styles.page}>
-      <h1>Сотрудничество</h1>
       <div className={styles.wrapper}>
-        <WireBlock className={styles.photo} label="Фото" height={280} />
+        <div className={styles.photo}>
+          <Image src="/images/river.jpg" alt="Сотрудничество" fill style={{ objectFit: 'cover' }} />
+        </div>
         <div className={styles.text}>
           <h2>Варианты сотрудничества</h2>
           <p>Мы открыты для партнёрства с магазинами здорового питания, ресторанами, кафе и корпоративными заказчиками.</p>
