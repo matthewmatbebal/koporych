@@ -2,27 +2,87 @@
 
 .page
   @include mixins.container
-  padding: var(--space-12) 0
+  padding: var(--space-16) 0
   display: flex
   flex-direction: column
   gap: var(--space-8)
 
-.section
+.hero
+  position: relative
+  height: 440px
+  border-radius: var(--radius-lg)
+  overflow: hidden
+
+.heroOverlay
+  position: absolute
+  inset: 0
+  background: linear-gradient(to top, rgba(28, 43, 33, 0.75) 0%, rgba(28, 43, 33, 0.3) 100%)
+  pointer-events: none
+
+.heroContent
+  position: absolute
+  inset: 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  text-align: center
+  padding: var(--space-8)
+  gap: var(--space-3)
+
+.heroTitle
+  font-size: var(--text-h1)
+  font-weight: 700
+  color: #fff
+
+.heroSub
+  font-size: var(--text-h3)
+  color: rgba(255, 255, 255, 0.75)
+  line-height: 1.5
+
+.grid
   display: flex
   flex-direction: column
   gap: var(--space-4)
 
+.card
+  background: var(--color-surface)
+  border-radius: var(--radius-lg)
+  padding: var(--space-6)
+  display: flex
+  flex-direction: column
+  gap: var(--space-4)
+
+.cardLabel
+  font-size: var(--text-micro)
+  letter-spacing: 0.12em
+  text-transform: uppercase
+  color: var(--color-text-muted)
+
 .list
+  list-style: none
   display: flex
   flex-direction: column
-  gap: var(--space-3)
-  padding-left: var(--space-6)
 
-  li
-    line-height: 1.6
-
-.details
+.listItem
   display: flex
   flex-direction: column
-  gap: var(--space-2)
+  gap: var(--space-1)
+  padding: var(--space-3) 0
+  border-bottom: 1px solid var(--color-border)
+
+  &:first-child
+    padding-top: 0
+
+  &:last-child
+    border-bottom: none
+    padding-bottom: 0
+
+.listName
+  font-size: var(--text-body)
+  font-weight: 600
+  color: var(--color-text)
+
+.listMeta
+  font-size: var(--text-small)
   color: var(--color-text-muted)

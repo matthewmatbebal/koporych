@@ -1,11 +1,11 @@
 import cn from 'classnames'
-import { WireBlock } from '@/components/ui/WireBlock/WireBlock'
+import Image from 'next/image'
 import { CustomSelect } from '@/components/ui/CustomSelect/CustomSelect'
 import styles from './page.module.sass'
 
 const CART_ITEMS = [
-  { name: 'Иван-чай классический', weight: '100 г', qty: 1, price: '450 ₽' },
-  { name: 'Иван-чай с чабрецом', weight: '80 г', qty: 2, price: '760 ₽' },
+  { name: 'Иван-чай классический', weight: '100 г', qty: 1, price: '450 ₽', image: '/images/classic.jpg' },
+  { name: 'Иван-чай с чабрецом', weight: '80 г', qty: 2, price: '760 ₽', image: '/images/grass.jpg' },
 ]
 
 export default function CartPage() {
@@ -19,7 +19,7 @@ export default function CartPage() {
           {CART_ITEMS.map((item, i) => (
             <div key={i} className={styles.item}>
               <div className={styles.itemPhoto}>
-                <WireBlock label="Фото" height={72} />
+                <Image src={item.image} alt={item.name} fill style={{ objectFit: 'cover' }} />
               </div>
               <div className={styles.itemInfo}>
                 <span className={styles.itemName}>{item.name}</span>
@@ -75,7 +75,7 @@ export default function CartPage() {
             <textarea placeholder=" " rows={3} className={styles.input} />
             <span className={styles.label}>Комментарий к заказу (необязательно)</span>
           </label>
-          <button type="submit" className={cn('btn', styles.submit)}>Оформить заказ</button>
+          <button type="submit" className={cn('btn', 'btn-outline', styles.submit)}>Оформить заказ</button>
         </form>
       </div>
 
