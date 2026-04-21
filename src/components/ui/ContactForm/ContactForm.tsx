@@ -22,7 +22,7 @@ export function ContactForm({ showTitle = true }: { showTitle?: boolean }) {
           <textarea placeholder=" " rows={4} className={styles.input} />
           <span className={styles.label}>Ваш вопрос</span>
         </label>
-        <button type="submit" className={cn('btn', styles.submit)}>Отправить</button>
+        <button type="submit" className={cn('btn-outline', 'btn', styles.submit)}>Отправить</button>
       </form>
     </>
   )
