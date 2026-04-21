@@ -15,7 +15,7 @@ export function ProductCard({ product }: { product: Product }) {
         <p className={styles.cardSub}>{product.sub}</p>
         <div className={styles.cardFooter}>
           <span className={styles.price}>{product.price}</span>
-          <button className="btn" onClick={e => e.preventDefault()}>В корзину</button>
+          <button className="btn btn-outline" onClick={e => e.preventDefault()}>В корзину</button>
         </div>
       </div>
     </Link>

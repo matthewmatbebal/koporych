@@ -27,7 +27,7 @@ export function HomePage() {
           <p className={styles.aboutEyebrow}>О нас</p>
           <h2>Мы делаем чай<br />с душой</h2>
           <p>Собираем иван-чай вручную в экологически чистых местах Ленинградской и Вологодской областей. Традиционная ферментация — насыщенный вкус и аромат, без кофеина.</p>
-          <Link href="/about" className="btn">Узнать больше</Link>
+          <Link href="/about" className="btn btn-outline">Узнать больше</Link>
         </div>
       </section>
 

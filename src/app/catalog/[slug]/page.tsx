@@ -35,7 +35,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <span className={styles.counterVal}>1</span>
               <button className={styles.counterBtn}>+</button>
             </div>
-            <button className={cn('btn', styles.addBtn)}>Добавить в корзину</button>
+            <button className={cn('btn', 'btn-outline', styles.addBtn)}>Добавить в корзину</button>
           </div>
         </div>
       </div>
