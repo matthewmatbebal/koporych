@@ -1,6 +1,6 @@
 import { ProductCatalog } from '@/components/ui/ProductCatalog/ProductCatalog'
 import { PRODUCTS } from '@/lib/products'
-import styles from './page.module.sass'
+import styles from './HomePage.module.sass'
 
 const FEATURED = PRODUCTS.filter(p => p.featured)
 

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { FeaturedSection } from './FeaturedSection'
-import styles from './page.module.sass'
+import styles from './HomePage.module.sass'
 
 export function HomePage() {
   return (
