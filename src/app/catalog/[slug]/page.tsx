@@ -2,6 +2,7 @@ import cn from 'classnames'
 import Link from 'next/link'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
 import { ProductGallery } from '@/components/ui/ProductGallery/ProductGallery'
+import { QuantityCounter } from '@/components/ui/QuantityCounter/QuantityCounter'
 import { GALLERY_IMAGES } from '@/lib/products'
 import styles from './page.module.sass'
 
@@ -30,11 +31,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <p className={styles.weight}>Вес: 100 г</p>
           <p className={styles.price}>450 ₽</p>
           <div className={styles.addToCart}>
-            <div className={styles.counter}>
-              <button className={styles.counterBtn}>−</button>
-              <span className={styles.counterVal}>1</span>
-              <button className={styles.counterBtn}>+</button>
-            </div>
+            <QuantityCounter value={1} />
             <button className={cn('btn', 'btn-outline', styles.addBtn)}>Добавить в корзину</button>
           </div>
         </div>

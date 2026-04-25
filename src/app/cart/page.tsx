@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import { CustomSelect } from '@/components/ui/CustomSelect/CustomSelect'
+import { QuantityCounter } from '@/components/ui/QuantityCounter/QuantityCounter'
 import styles from './page.module.sass'
 
 const CART_ITEMS = [
@@ -25,11 +26,7 @@ export default function CartPage() {
                 <span className={styles.itemName}>{item.name}</span>
                 <span className={styles.itemWeight}>{item.weight}</span>
               </div>
-              <div className={styles.itemControls}>
-                <button className={styles.counterBtn}>−</button>
-                <span className={styles.counterVal}>{item.qty}</span>
-                <button className={styles.counterBtn}>+</button>
-              </div>
+              <QuantityCounter value={item.qty} />
               <span className={styles.itemPrice}>{item.price}</span>
               <button className={styles.removeBtn}>✕</button>
             </div>
