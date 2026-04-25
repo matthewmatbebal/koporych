@@ -12,7 +12,7 @@ export default function ContactsPage() {
       </section>
 
       <section className={styles.section}>
-        <ContactForm showTitle={false} />
+        <ContactForm />
       </section>
 
     </div>

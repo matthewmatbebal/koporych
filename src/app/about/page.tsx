@@ -35,7 +35,7 @@ export default function AboutPage() {
       </section>
 
       <section className={cn(styles.section, styles.sectionNext)}>
-        <ContactForm />
+        <ContactForm title="Напишите нам" />
       </section>
 
     </div>

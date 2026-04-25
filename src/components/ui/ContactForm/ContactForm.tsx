@@ -1,10 +1,10 @@
 import cn from 'classnames'
 import styles from './ContactForm.module.sass'
 
-export function ContactForm({ showTitle = true }: { showTitle?: boolean }) {
+export function ContactForm({ title }: { title?: string }) {
   return (
     <>
-      {showTitle && <h2>Напишите нам</h2>}
+      {title && <h2>{title}</h2>}
       <form className={styles.form}>
         <label className={styles.field}>
           <input type="email" placeholder=" " className={styles.input} />

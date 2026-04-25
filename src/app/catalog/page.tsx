@@ -1,3 +1,4 @@
+import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
 import { ProductCatalog } from '@/components/ui/ProductCatalog/ProductCatalog'
 import { PRODUCTS } from '@/lib/products'
 import styles from './page.module.sass'
@@ -15,6 +16,9 @@ export default function CatalogPage() {
           'Набор': '/images/sagan-dali.jpg',
         }}
       />
+      <section className={styles.formSection}>
+        <ContactForm title="Не нашли что искали?" />
+      </section>
     </div>
   )
 }

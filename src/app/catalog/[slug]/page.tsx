@@ -46,7 +46,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <h2>Не нашли что искали?</h2>
         <p>Ответим на любые вопросы и поможем подобрать чай</p>
       </div>
-      <ContactForm showTitle={false} />
+      <ContactForm />
 
     </div>
   )

@@ -21,7 +21,7 @@ export default function CooperationPage() {
           <p>Напишите нам — обсудим условия индивидуально.</p>
         </div>
       </div>
-      <ContactForm />
+      <ContactForm title="Напишите нам" />
     </div>
   )
 }
