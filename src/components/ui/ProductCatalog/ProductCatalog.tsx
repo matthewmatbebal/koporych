@@ -13,9 +13,10 @@ interface ProductCatalogProps {
   allLabel?: string
   catalogLink?: string
   categoryImages?: Record<string, string>
+  title?: string
 }
 
-export function ProductCatalog({ products, allLabel, catalogLink, categoryImages }: ProductCatalogProps) {
+export function ProductCatalog({ products, allLabel, catalogLink, categoryImages, title }: ProductCatalogProps) {
   const [active, setActive] = useState<string | null>(allLabel ? allLabel : null)
 
   const categories = Array.from(new Set(products.map(p => p.category)))
@@ -52,6 +53,7 @@ export function ProductCatalog({ products, allLabel, catalogLink, categoryImages
           )
         })}
       </div>
+      {title && <h2>{title}</h2>}
       {filtered.length > 0 ? (
         <div className={styles.grid}>
           {filtered.map(p => (

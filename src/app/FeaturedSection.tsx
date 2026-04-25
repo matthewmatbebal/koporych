@@ -7,9 +7,9 @@ const FEATURED = PRODUCTS.filter(p => p.featured)
 export function FeaturedSection() {
   return (
     <section className={styles.section}>
-      <h2>Избранные товары</h2>
       <ProductCatalog
         products={FEATURED}
+        title="Избранные товары"
         catalogLink="/catalog"
         categoryImages={{
           'Рассыпной': '/images/grass.jpg',

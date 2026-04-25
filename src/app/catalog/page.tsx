@@ -6,9 +6,9 @@ import styles from './page.module.sass'
 export default function CatalogPage() {
   return (
     <div className={styles.page}>
-      <h1>Каталог</h1>
       <ProductCatalog
         products={PRODUCTS}
+        title="Каталог"
         categoryImages={{
           'Рассыпной': '/images/grass.jpg',
           'Пирамидки': '/images/pyramids.jpg',
