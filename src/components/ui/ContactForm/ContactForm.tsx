@@ -24,20 +24,11 @@ export function ContactForm({ title, subtitle, contacts = 'default' }: { title?:
               <span className={styles.cardValue}>hello@koporych.ru</span>
             </a>
             {contacts === 'full' && (
-              <>
-                <a href="#" className={styles.card}>
-                  <span className={styles.cardLabel}>ВКонтакте</span>
-                  <span className={styles.cardValue}>vk.com/koporych</span>
-                </a>
-                <a href="#" className={styles.card}>
-                  <span className={styles.cardLabel}>Telegram</span>
-                  <span className={styles.cardValue}>@koporych</span>
-                </a>
-                <a href="#" className={styles.card}>
-                  <span className={styles.cardLabel}>WhatsApp</span>
-                  <span className={styles.cardValue}>+7 (900) 123-45-67</span>
-                </a>
-              </>
+              <div className={styles.socials}>
+                <a href="#" className={styles.socialCard}>ВКонтакте</a>
+                <a href="#" className={styles.socialCard}>Telegram</a>
+                <a href="#" className={styles.socialCard}>WhatsApp</a>
+              </div>
             )}
           </div>
         )}
