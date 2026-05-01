@@ -1,0 +1,59 @@
+.slider
+  width: 100%
+
+.swiperWrap
+  position: relative
+  width: 100%
+  aspect-ratio: 16 / 12
+
+.swiper
+  position: absolute !important
+  inset: 0
+  width: 100% !important
+  height: 100% !important
+  border-radius: var(--radius-lg)
+  overflow: hidden
+
+  :global(.swiper-wrapper),
+  :global(.swiper-slide)
+    height: 100%
+
+  &:hover .navPrev,
+  &:hover .navNext
+    opacity: 1
+
+.slide
+  width: 100%
+  height: 100%
+  position: relative
+  background: var(--color-surface)
+
+.navPrev,
+.navNext
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+  z-index: 10
+  background: none
+  border: none
+  color: rgba(255, 255, 255, 0.45)
+  font-size: 36px
+  line-height: 1
+  width: 36px
+  height: 36px
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+  opacity: 0
+  transition: opacity 0.2s, color 0.2s
+  padding: 0
+
+  &:hover
+    color: rgba(255, 255, 255, 0.85)
+
+.navPrev
+  left: var(--space-3)
+
+.navNext
+  right: var(--space-3)

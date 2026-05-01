@@ -16,7 +16,7 @@
 
 .missionSection
   background: var(--color-surface)
-  padding-bottom: var(--space-16)
+  padding: var(--space-16) 0
 
 .missionInner
   @include mixins.container
@@ -47,19 +47,46 @@
   text-transform: uppercase
   color: var(--color-text-muted)
 
-.factoryPhoto
-  position: relative
-  border-radius: var(--radius-lg)
-  overflow: hidden
-
 .twoCol
   display: grid
   grid-template-columns: 1.5fr 1fr
   gap: var(--space-8)
-  align-items: stretch
+
+.photoCol
+  display: flex
+  flex-direction: column
+
+.factoryPhoto
+  position: sticky
+  top: calc(64px + var(--space-8))
+  z-index: 10
+  flex-shrink: 0
 
 .companyText
   display: flex
   flex-direction: column
   gap: var(--space-4)
-  padding: var(--space-16) 0
+  padding: 0
+
+.twoColReversed
+  display: grid
+  grid-template-columns: 1fr 1.5fr
+  gap: var(--space-8)
+  align-items: center
+
+.videoText
+  display: flex
+  flex-direction: column
+  gap: var(--space-4)
+  padding: var(--space-4) 0
+
+.videoWrapper
+  border-radius: var(--radius-lg)
+  overflow: hidden
+  aspect-ratio: 16 / 9
+
+  video
+    width: 100%
+    height: 100%
+    object-fit: cover
+    display: block
