@@ -1,6 +1,13 @@
 export const ABOUT_PAGE = {
   company: {
-    photos: ['/images/factory.jpg', '/images/about.jpg', '/images/classic.jpg'],
+    photos: [
+      '/images/about-page/about-slider-1.jpg',
+      '/images/about-page/about-slider-2.jpg',
+      '/images/about-page/about-slider-3.jpg',
+      '/images/about-page/about-slider-4.jpg',
+      '/images/about-page/about-slider-5.jpg',
+      '/images/about-page/about-slider-6.jpg',
+    ],
     title: 'О компании',
     facts: [
       { value: '~10 лет', label: 'изучали и оттачивали технологию обработки кипрея' },

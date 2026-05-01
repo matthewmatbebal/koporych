@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
   sassOptions: {
     loadPaths: [path.resolve(__dirname, 'src/styles')],
   },
+  images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+  },
 };
 
 export default withPayload(nextConfig);
