@@ -36,7 +36,7 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
                 modules={[Thumbs]}
                 onSwiper={setThumbsSwiper}
                 watchSlidesProgress
-                slidesPerView={images.length}
+                slidesPerView={"auto"}
                 className={styles.thumbsSwiper}
                 // spaceBetween={8}
             >
