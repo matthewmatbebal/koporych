@@ -8,7 +8,6 @@ export function ProductCard({ product }: { product: Product }) {
     <Link href={`/catalog/${product.slug}`} className={styles.card}>
       <div className={styles.cardPhoto}>
         <Image src={product.image} alt={product.name} fill style={{ objectFit: 'cover' }} />
-        <span className={styles.cardTag}>{product.category}</span>
       </div>
       <div className={styles.cardBody}>
         <h3 className={styles.cardName}>{product.name}</h3>

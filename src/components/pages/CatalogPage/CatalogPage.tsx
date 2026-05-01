@@ -13,11 +13,10 @@ export function CatalogPage() {
           'Рассыпной': '/images/grass.jpg',
           'Пирамидки': '/images/pyramids.jpg',
           'Развес': '/images/classic.jpg',
-          'Набор': '/images/sagan-dali.jpg',
         }}
       />
       <section className={styles.formSection}>
-        <ContactForm title="Не нашли что искали?" />
+        <ContactForm title="Не нашли, что искали?" subtitle="Ответим на любые вопросы и поможем индивидуально подобрать чай" />
       </section>
     </div>
   )

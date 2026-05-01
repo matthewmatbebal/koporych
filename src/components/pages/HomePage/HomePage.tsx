@@ -11,9 +11,11 @@ export function HomePage() {
         <Image src="/images/banner.jpg" alt="Копорыч" fill className={styles.heroBg} priority />
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Копорыч</h1>
-          <p className={styles.heroSub}>Традиционный русский чай<br />из экологически чистых мест</p>
-          <Link href="/catalog" className={styles.heroBtn}>Смотреть каталог</Link>
+          <div className={styles.heroTop}>
+            <Image src="/images/logo.svg" alt="Копорыч" width={148} height={148} className={styles.heroLogo} />
+            <p className={styles.heroSub}>Традиционный русский чай<br />из экологически чистых мест</p>
+          </div>
+          <Link href="/catalog" className={styles.heroBtn}>Каталог</Link>
         </div>
       </section>
 

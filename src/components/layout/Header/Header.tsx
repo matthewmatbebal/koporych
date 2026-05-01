@@ -37,7 +37,7 @@ export function Header() {
     })}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
-          <Image src="/images/logo.svg" alt="" width={40} height={40} className={styles.logoIcon} />
+          <Image src={isHome && !scrolled ? '/images/logo-bold.svg' : '/images/logo.svg'} alt="" width={40} height={40} className={styles.logoIcon} />
           КОПОРЫЧ
         </Link>
         <nav className={styles.nav}>

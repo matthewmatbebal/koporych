@@ -14,6 +14,7 @@ export function FeaturedSection() {
         categoryImages={{
           'Рассыпной': '/images/grass.jpg',
           'Пирамидки': '/images/pyramids.jpg',
+          'Развес': '/images/classic.jpg',
         }}
       />
     </section>
