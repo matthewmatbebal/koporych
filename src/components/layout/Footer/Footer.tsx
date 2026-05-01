@@ -1,14 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { SITE } from '@/lib/mock/site'
 import styles from './Footer.module.sass'
-
-const NAV_LINKS = [
-  { href: '/catalog', label: 'Каталог' },
-  { href: '/about', label: 'О нас' },
-  { href: '/cooperation', label: 'Сотрудничество' },
-  { href: '/delivery', label: 'Доставка и оплата' },
-  { href: '/contacts', label: 'Контакты' },
-] as const
 
 export function Footer() {
   return (
@@ -17,29 +10,31 @@ export function Footer() {
         <div className={styles.top}>
           <div className={styles.brand}>
             <Link href="/" className={styles.logo}>
-              <Image src="/images/logo.svg" alt="" width={40} height={40} />
-              КОПОРЫЧ
+              <Image src={SITE.logo} alt="" width={40} height={40} />
+              {SITE.name}
             </Link>
-            <p className={styles.tagline}>Иван-чай ручной сборки<br />из экологически чистых мест России</p>
+            <p className={styles.tagline}>{SITE.footer.tagline.split('\n').map((line, i) => (
+              <span key={i}>{line}{i === 0 && <br />}</span>
+            ))}</p>
           </div>
           <nav className={styles.nav}>
-            {NAV_LINKS.map(link => (
+            {SITE.nav.map(link => (
               <Link key={link.href} href={link.href} className={styles.navLink}>
                 {link.label}
               </Link>
             ))}
           </nav>
           <div className={styles.contacts}>
-            <a href="tel:+79001234567">+7 (900) 123-45-67</a>
-            <a href="mailto:hello@koporych.ru">hello@koporych.ru</a>
+            <a href={SITE.contacts.phoneHref}>{SITE.contacts.phone}</a>
+            <a href={SITE.contacts.emailHref}>{SITE.contacts.email}</a>
           </div>
         </div>
         <div className={styles.bottom}>
-          <p>© 2024 Копорыч. Все права защищены.</p>
+          <p>{SITE.footer.copyright}</p>
           <div className={styles.socials}>
-            <a href="https://vk.com/koporych" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>ВКонтакте</a>
-            <a href="https://t.me/koporych" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>Telegram</a>
-            <a href="https://wa.me/79001234567" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>WhatsApp</a>
+            <a href={SITE.socials.vk.url} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>{SITE.socials.vk.label}</a>
+            <a href={SITE.socials.telegram.url} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>{SITE.socials.telegram.label}</a>
+            <a href={SITE.socials.whatsapp.url} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>{SITE.socials.whatsapp.label}</a>
           </div>
         </div>
       </div>

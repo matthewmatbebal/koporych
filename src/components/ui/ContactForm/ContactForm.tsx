@@ -1,4 +1,5 @@
 import cn from 'classnames'
+import { SITE } from '@/lib/mock/site'
 import styles from './ContactForm.module.sass'
 
 type ContactsVariant = 'default' | 'full' | 'none'
@@ -15,19 +16,19 @@ export function ContactForm({ title, subtitle, contacts = 'default' }: { title?:
       <div className={cn(styles.layout, { [styles.layoutWithContacts]: showLeft })}>
         {showLeft && (
           <div className={styles.left}>
-            <a href="tel:+79001234567" className={styles.card}>
+            <a href={SITE.contacts.phoneHref} className={styles.card}>
               <span className={styles.cardLabel}>Наш телефон</span>
-              <span className={styles.cardValue}>+7 (900) 123-45-67</span>
+              <span className={styles.cardValue}>{SITE.contacts.phone}</span>
             </a>
-            <a href="mailto:hello@koporych.ru" className={styles.card}>
+            <a href={SITE.contacts.emailHref} className={styles.card}>
               <span className={styles.cardLabel}>Наша почта</span>
-              <span className={styles.cardValue}>hello@koporych.ru</span>
+              <span className={styles.cardValue}>{SITE.contacts.email}</span>
             </a>
             {contacts === 'full' && (
               <div className={styles.socials}>
-                <a href="#" className={styles.socialCard}>ВКонтакте</a>
-                <a href="#" className={styles.socialCard}>Telegram</a>
-                <a href="#" className={styles.socialCard}>WhatsApp</a>
+                <a href={SITE.socials.vk.url} className={styles.socialCard}>{SITE.socials.vk.label}</a>
+                <a href={SITE.socials.telegram.url} className={styles.socialCard}>{SITE.socials.telegram.label}</a>
+                <a href={SITE.socials.whatsapp.url} className={styles.socialCard}>{SITE.socials.whatsapp.label}</a>
               </div>
             )}
           </div>

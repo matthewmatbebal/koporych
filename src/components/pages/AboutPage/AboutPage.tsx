@@ -2,21 +2,25 @@ import cn from 'classnames'
 import Image from 'next/image'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
 import { ContactInfo } from '@/components/ui/ContactInfo/ContactInfo'
+import { ABOUT_PAGE } from '@/lib/mock/about'
 import styles from './AboutPage.module.sass'
 
 export function AboutPage() {
+  const { company, mission } = ABOUT_PAGE
+
   return (
     <div className={styles.page}>
 
       <section className={styles.section}>
         <div className={styles.twoCol}>
           <div className={styles.factoryPhoto}>
-            <Image src="/images/factory.jpg" alt="Производство" fill style={{ objectFit: 'cover' }} />
+            <Image src={company.photo} alt="Производство" fill style={{ objectFit: 'cover' }} />
           </div>
           <div className={styles.companyText}>
-            <h2>О компании</h2>
-            <p>Копорыч — небольшая семейная мастерская в Ленинградской области. Мы возрождаем традицию русского иван-чая: собираем листья кипрея вручную в экологически чистых местах, ферментируем и сушим по старинным рецептам.</p>
-            <p>Наш чай не содержит кофеина, богат витаминами и подходит для ежедневного употребления всей семьёй. Каждая партия — это ручной труд и забота о качестве.</p>
+            <h2>{company.title}</h2>
+            {company.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
         </div>
       </section>
@@ -24,8 +28,8 @@ export function AboutPage() {
       <section className={styles.missionSection}>
         <div className={styles.missionInner}>
           <span className={styles.missionQuote}>«</span>
-          <p className={styles.missionText}>Мы хотим вернуть иван-чай на столы российских семей. Натуральный, без химии, собранный с любовью — такой чай когда-то пили наши предки, и мы уверены: он должен быть в каждом доме.</p>
-          <span className={styles.missionSource}>— Копорыч</span>
+          <p className={styles.missionText}>{mission.quote}</p>
+          <span className={styles.missionSource}>{mission.source}</span>
         </div>
       </section>
 

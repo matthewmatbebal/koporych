@@ -5,15 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { SITE } from '@/lib/mock/site'
 import styles from './Header.module.sass'
-
-const NAV_LINKS = [
-  { href: '/catalog', label: 'Каталог' },
-  { href: '/about', label: 'О нас' },
-  { href: '/cooperation', label: 'Сотрудничество' },
-  { href: '/delivery', label: 'Доставка и оплата' },
-  { href: '/contacts', label: 'Контакты' },
-] as const
 
 export function Header() {
   const pathname = usePathname()
@@ -37,11 +30,11 @@ export function Header() {
     })}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo}>
-          <Image src={isHome && !scrolled ? '/images/logo-bold.svg' : '/images/logo.svg'} alt="" width={40} height={40} className={styles.logoIcon} />
-          КОПОРЫЧ
+          <Image src={isHome && !scrolled ? SITE.logoBold : SITE.logo} alt="" width={40} height={40} className={styles.logoIcon} />
+          {SITE.name}
         </Link>
         <nav className={styles.nav}>
-          {NAV_LINKS.map(link => {
+          {SITE.nav.map(link => {
             const isActive = pathname.startsWith(link.href)
             return (
               <Link
