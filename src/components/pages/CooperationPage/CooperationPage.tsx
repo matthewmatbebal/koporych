@@ -23,7 +23,7 @@ export function CooperationPage() {
           <p>{data.outro}</p>
         </div>
       </div>
-      <ContactForm title="Напишите нам" />
+      <ContactForm title="Напишите нам" contacts={"full"}/>
     </div>
   )
 }

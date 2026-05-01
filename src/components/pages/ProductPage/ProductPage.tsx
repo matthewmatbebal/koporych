@@ -53,7 +53,7 @@ export function ProductPage({ slug }: { slug: string }) {
 
       <div className={styles.divider} />
 
-      <ContactForm title="Не нашли что искали?" subtitle="Ответим на любые вопросы и поможем подобрать чай" />
+      <ContactForm title="Не нашли что искали?" subtitle="Ответим на любые вопросы и поможем подобрать чай" contacts={"full"}/>
 
     </div>
   )

@@ -13,7 +13,7 @@ export function CatalogPage() {
         categoryImages={CATALOG_PAGE.categoryImages}
       />
       <section className={styles.formSection}>
-        <ContactForm title={CATALOG_PAGE.form.title} subtitle={CATALOG_PAGE.form.subtitle} />
+        <ContactForm title={CATALOG_PAGE.form.title} subtitle={CATALOG_PAGE.form.subtitle} contacts={"full"}/>
       </section>
     </div>
   )
