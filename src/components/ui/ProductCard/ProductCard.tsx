@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Product } from '@/lib/products'
@@ -7,7 +9,7 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <Link href={`/catalog/${product.slug}`} className={styles.card}>
       <div className={styles.cardPhoto}>
-        <Image src={product.image} alt={product.name} fill style={{ objectFit: 'cover' }} />
+        <Image src={product.images[0]} alt={product.name} fill style={{ objectFit: 'cover' }} />
       </div>
       <div className={styles.cardBody}>
         <h3 className={styles.cardName}>{product.name}</h3>
