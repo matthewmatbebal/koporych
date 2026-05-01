@@ -2,6 +2,7 @@ import cn from 'classnames'
 import Image from 'next/image'
 import { CustomSelect } from '@/components/ui/CustomSelect/CustomSelect'
 import { QuantityCounter } from '@/components/ui/QuantityCounter/QuantityCounter'
+import { SITE } from '@/lib/mock/site'
 import styles from './CartPage.module.sass'
 
 const CART_ITEMS = [
@@ -41,6 +42,22 @@ export function CartPage() {
 
       <div className={styles.orderSection}>
         <h2>Оформление заказа</h2>
+        <div className={styles.orderLayout}>
+          <div className={styles.orderContacts}>
+            <a href={SITE.contacts.phoneHref} className={styles.contactCard}>
+              <span className={styles.contactLabel}>Наш телефон</span>
+              <span className={styles.contactValue}>{SITE.contacts.phone}</span>
+            </a>
+            <a href={SITE.contacts.emailHref} className={styles.contactCard}>
+              <span className={styles.contactLabel}>Наша почта</span>
+              <span className={styles.contactValue}>{SITE.contacts.email}</span>
+            </a>
+            <div className={styles.socials}>
+              <a href={SITE.socials.vk.url} className={styles.socialCard}>{SITE.socials.vk.label}</a>
+              <a href={SITE.socials.telegram.url} className={styles.socialCard}>{SITE.socials.telegram.label}</a>
+              <a href={SITE.socials.whatsapp.url} className={styles.socialCard}>{SITE.socials.whatsapp.label}</a>
+            </div>
+          </div>
         <form className={styles.form}>
           <label className={styles.field}>
             <input type="email" placeholder=" " className={styles.input} />
@@ -74,6 +91,7 @@ export function CartPage() {
           </label>
           <button type="submit" className={cn('btn', 'btn-outline', styles.submit)}>Оформить заказ</button>
         </form>
+        </div>
       </div>
 
     </div>
