@@ -1,0 +1,81 @@
+@use "@/styles/mixins"
+
+
+/* Burger */
+.burgerBtn
+  display: flex
+  flex-direction: column
+  justify-content: center
+  gap: 5px
+  width: 30px
+  height: 24px
+  background: none
+  border: none
+  cursor: pointer
+  padding: 4px
+  flex-shrink: 0
+  color: var(--color-text-muted)
+
+  span
+    display: block
+    height: 2px
+    background: currentColor
+    border-radius: 2px
+    transition: transform 0.25s, opacity 0.25s
+
+.light
+  color: rgba(255, 255, 255, 0.85)
+
+.burgerOpen
+  span:nth-child(1)
+    transform: translateY(7px) rotate(45deg)
+  span:nth-child(2)
+    opacity: 0
+  span:nth-child(3)
+    transform: translateY(-7px) rotate(-45deg)
+
+/* Dropdown */
+.dropdown
+  position: fixed
+  top: 72px
+  right: var(--space-4)
+  z-index: 99
+  background: var(--color-surface)
+  border: 1px solid var(--color-border)
+  border-radius: var(--radius-lg)
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12)
+  min-width: 220px
+  padding: var(--space-4)
+  @include mixins.flex-center(column, center, start)
+  gap: var(--space-4)
+  transform: translateY(-8px) scale(0.97)
+  opacity: 0
+  pointer-events: none
+  transform-origin: top right
+  transition: transform 0.2s, opacity 0.2s
+
+.dropdownOpen
+  transform: translateY(0) scale(1)
+  opacity: 1
+  pointer-events: auto
+
+.link
+  display: block
+  font-size: var(--text-body)
+  font-weight: 600
+  color: var(--color-text-muted)
+  padding: var(--space-3) var(--space-5)
+  transition: color 0.15s, background 0.15s
+
+  &:hover
+    color: var(--color-text)
+    background: var(--color-bg)
+
+.linkActive
+  color: var(--color-text)
+
+/* Backdrop */
+.backdrop
+  position: fixed
+  inset: 0
+  z-index: 98
