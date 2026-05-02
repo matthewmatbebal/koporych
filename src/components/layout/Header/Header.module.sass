@@ -1,4 +1,5 @@
 @use "@/styles/mixins"
+@use "@/styles/variables" as vars
 
 .header
   position: fixed
@@ -23,7 +24,7 @@
   .logoIcon
     filter: brightness(0) invert(1)
 
-  .navLink:hover, .searchBtn:hover
+  .navLink:hover, .searchBtn:hover, .cartBtn:hover
     color: #fff
 
   .navLinkActive
@@ -36,6 +37,11 @@
   align-items: center
   gap: var(--space-8)
 
+  @media (max-width: vars.$pre-mobile)
+    gap: 0
+    justify-content: space-between
+
+
 .logo
   display: flex
   align-items: center
@@ -46,6 +52,9 @@
   flex-shrink: 0
   color: var(--color-text)
 
+  @media (max-width: vars.$pre-mobile)
+    font-size: 14px
+
 .logoIcon
   display: block
 
@@ -53,6 +62,9 @@
   display: flex
   gap: var(--space-8)
   flex: 1
+
+  @media (max-width: 999px)
+    display: none
 
 .navLink
   font-size: var(--text-body)
@@ -70,8 +82,9 @@
 
 .actions
   display: flex
-  gap: var(--space-4)
+  gap: var(--space-3)
   align-items: center
+  margin-left: auto
 
 .searchBtn
   background: none
@@ -92,10 +105,7 @@
   display: flex
   align-items: center
   gap: var(--space-2)
-  font-size: var(--text-small)
-  font-weight: 700
-  letter-spacing: 0.04em
-  color: var(--color-text)
+  color: var(--color-text-muted)
   transition: color 0.15s
 
   &:hover
@@ -112,3 +122,9 @@
   justify-content: center
   font-size: 10px
   font-weight: 700
+
+.mobileOnly
+  display: none
+
+  @media (max-width: 999px)
+    display: block
