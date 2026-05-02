@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Thumbs, Navigation } from 'swiper/modules'
+import { Navigation } from 'swiper/modules'
 import type { Swiper as SwiperClass } from 'swiper/types'
 import 'swiper/swiper.css'
 import styles from './ProductGallery.module.sass'
@@ -14,51 +14,38 @@ interface ProductGalleryProps {
 }
 
 export function ProductGallery({ images, alt }: ProductGalleryProps) {
-    const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null)
+    const [activeIndex, setActiveIndex] = useState(0)
     const [lightbox, setLightbox] = useState<number | null>(null)
-
-    useEffect(() => {
-        if (lightbox === null) return
-
-        function onKey(e: KeyboardEvent) {
-            if (e.key === 'Escape') setLightbox(null)
-        }
-
-        window.addEventListener('keydown', onKey)
-        return () => window.removeEventListener('keydown', onKey)
-    }, [lightbox])
+    const swiperRef = useRef<SwiperClass | null>(null)
 
     return (
         <div className={styles.gallery}>
             {/* THUMBS (LEFT) */}
-            <Swiper
-                direction="vertical"
-                modules={[Thumbs]}
-                onSwiper={setThumbsSwiper}
-                watchSlidesProgress
-                slidesPerView={"auto"}
-                className={styles.thumbsSwiper}
-                // spaceBetween={8}
-            >
-                {images.map((src) => (
-                    <SwiperSlide key={src} className={styles.thumbSlide}>
-                        <div className={styles.thumb}>
-                            <Image src={src} alt="" fill style={{ objectFit: 'cover' }} />
-                        </div>
-                    </SwiperSlide>
+            <div className={styles.thumbsList}>
+                {images.map((src, i) => (
+                    <div
+                        key={src}
+                        className={`${styles.thumb} ${i === activeIndex ? styles.thumbActive : ''}`}
+                        onClick={() => swiperRef.current?.slideTo(i)}
+                    >
+                        <Image src={src} alt="" fill style={{ objectFit: 'cover' }} />
+                    </div>
                 ))}
-            </Swiper>
+            </div>
 
             {/* MAIN (RIGHT) */}
             <Swiper
-                modules={[Thumbs, Navigation]}
-                thumbs={{ swiper: thumbsSwiper }}
+                modules={[Navigation]}
                 navigation={{
                     prevEl: `.${styles.navPrev}`,
                     nextEl: `.${styles.navNext}`,
                 }}
                 className={styles.mainSwiper}
-                onSlideChange={() => setLightbox(null)}
+                onSwiper={(swiper) => { swiperRef.current = swiper }}
+                onSlideChange={(swiper) => {
+                    setActiveIndex(swiper.activeIndex)
+                    setLightbox(null)
+                }}
             >
                 {images.map((src, i) => (
                     <SwiperSlide key={src}>
