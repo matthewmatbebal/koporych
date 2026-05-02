@@ -1,4 +1,5 @@
 @use "@/styles/mixins"
+@use "@/styles/variables" as vars
 
 .page
   display: flex
@@ -11,6 +12,9 @@
   height: 640px
   margin-top: -64px
   overflow: hidden
+
+  @media (max-width: vars.$pre-mobile)
+    height: 440px
 
 .heroBg
   object-fit: cover
@@ -32,6 +36,10 @@
   gap: var(--space-6)
   animation: fadeInUp 0.8s ease both
 
+  @media(max-width: vars.$pre-mobile)
+    gap: var(--space-4)
+
+
 .heroTop
   display: flex
   flex-direction: row
@@ -42,20 +50,20 @@
   flex-shrink: 0
   filter: brightness(0) invert(1)
 
+  @media (max-width: vars.$pre-mobile)
+    max-width: 72px
+    max-height: 72px
+
 .eyebrowDivider
   opacity: 0.4
-
-.heroTitle
-  font-size: clamp(64px, 9vw, 112px)
-  font-weight: 700
-  line-height: 0.9
-  letter-spacing: -0.03em
-  color: #fff
 
 .heroSub
   font-size: var(--text-h2)
   color: rgba(255, 255, 255, 0.9)
   line-height: 1.5
+
+  @media (max-width: vars.$pre-mobile)
+    font-size: var(--text-h3)
 
 .heroBtn
   display: inline-flex
@@ -88,6 +96,9 @@
   flex-direction: column
   gap: var(--space-8)
 
+  @media (max-width: vars.$pre-mobile)
+    padding: var(--space-8) 0
+
 .grid3
   display: grid
   grid-template-columns: repeat(3, 1fr)
@@ -100,6 +111,10 @@
   padding-bottom: var(--space-16)
   align-items: center
 
+  @media (max-width: vars.$pre-mobile)
+    flex-direction: column
+    gap: var(--space-6)
+
 .aboutPhoto
   position: relative
   flex: 0 0 45%
@@ -107,12 +122,20 @@
   border-radius: var(--radius-lg)
   overflow: hidden
 
+  @media (max-width: vars.$pre-mobile)
+    flex: auto
+    width: 100%
+
 .aboutInner
   padding: var(--space-16)
   display: flex
   flex-direction: column
   align-items: flex-start
   gap: var(--space-6)
+
+  @media (max-width: vars.$pre-mobile)
+    padding: 0
+    gap: var(--space-4)
 
 .aboutEyebrow
   font-size: var(--text-small)

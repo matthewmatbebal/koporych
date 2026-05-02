@@ -1,7 +1,12 @@
-@mixin container
-  max-width: var(--container-max)
+@use "./variables" as vars
+
+@mixin container()
   margin: 0 auto
-  width: 100%
+  max-width: calc(100vw - 32px)
+  width: var(--container-max)
+
+  @media (max-width: vars.$pre-mobile)
+    width: 100%
 
 @mixin flex-center($direction: row, $justify: center, $align: center)
   display: flex
