@@ -1,3 +1,5 @@
+@use "@/styles/variables" as vars
+
 .slider
   width: 100%
 
@@ -5,6 +7,9 @@
   position: relative
   width: 100%
   aspect-ratio: 16 / 12
+
+  @media (max-width: vars.$pre-mobile)
+    aspect-ratio: 5 / 3
 
 .swiper
   position: absolute !important
