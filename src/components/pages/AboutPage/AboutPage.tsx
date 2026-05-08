@@ -1,6 +1,6 @@
 import cn from 'classnames'
+import Image from 'next/image'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
-import { ImageSlider } from '@/components/ui/ImageSlider/ImageSlider'
 import { ABOUT_PAGE } from '@/lib/mock/about'
 import styles from './AboutPage.module.sass'
 
@@ -14,14 +14,12 @@ export function AboutPage() {
         <div className={styles.twoCol}>
           <div className={styles.photoCol}>
             <div className={styles.factoryPhoto}>
-              <ImageSlider images={company.photos} alt="Производство" />
+              <Image src={company.photos[0]} alt="Производство" fill className={styles.factoryImg} />
             </div>
           </div>
-          <div className={styles.companyText}>
+          <div className={styles.videoText}>
             <h2>{company.title}</h2>
-            {company.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+            <p>{company.intro}</p>
           </div>
         </div>
       </section>

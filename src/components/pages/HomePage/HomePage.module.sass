@@ -107,23 +107,23 @@
 // ─── Секция «О нас» ──────────────────────────────────
 .aboutSection
   @include mixins.container
-  display: flex
+  display: grid
+  grid-template-columns: 1.2fr 1fr
   padding-bottom: var(--space-16)
   align-items: center
 
   @media (max-width: vars.$pre-mobile)
+    display: flex
     flex-direction: column
     gap: var(--space-6)
 
 .aboutPhoto
   position: relative
-  flex: 0 0 45%
-  height: 320px
+  aspect-ratio: 16 / 9
   border-radius: var(--radius-lg)
   overflow: hidden
 
   @media (max-width: vars.$pre-mobile)
-    flex: auto
     width: 100%
 
 .aboutInner
