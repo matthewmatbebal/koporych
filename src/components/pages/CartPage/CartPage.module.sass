@@ -1,4 +1,5 @@
 @use "@/styles/mixins"
+@use "@/styles/variables" as vars
 
 .page
   @include mixins.container
@@ -27,10 +28,13 @@
   border-radius: var(--radius-md)
   border: 1px solid var(--color-border)
 
+  @media (max-width: vars.$pre-mobile)
+    align-items: stretch
+
 .itemPhoto
   position: relative
-  width: 72px
-  height: 72px
+  width: 96px
+  aspect-ratio: 10 / 12
   flex-shrink: 0
   border-radius: var(--radius-sm)
   overflow: hidden
@@ -47,6 +51,27 @@
 .itemWeight
   font-size: var(--text-small)
   color: var(--color-text-muted)
+
+.itemRight
+  display: contents
+
+  @media (max-width: vars.$pre-mobile)
+    display: flex
+    flex-direction: column
+    flex: 1
+    justify-content: space-between
+    gap: var(--space-3)
+
+.itemBottom
+  display: contents
+
+  @media (max-width: vars.$pre-mobile)
+    display: flex
+    align-items: center
+    gap: var(--space-3)
+
+    .itemPrice
+      margin-left: auto
 
 .itemPrice
   font-size: var(--text-h3)
@@ -92,11 +117,20 @@
   gap: var(--space-12)
   align-items: start
 
+  @media (max-width: vars.$pre-mobile)
+    display: flex
+    flex-direction: column
+    gap: var(--space-8)
+
 .orderContacts
   display: flex
   flex-direction: column
   gap: var(--space-4)
   padding-top: 20px
+
+  @media (max-width: vars.$pre-mobile)
+    width: 100%
+    padding-top: 0
 
 .contactCard
   display: flex
@@ -140,6 +174,24 @@
 
   &:hover
     box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.3)
+
+.orderTitle
+  @media (max-width: vars.$pre-mobile)
+    display: none
+
+.orderTitleMobile
+  display: none
+
+  @media (max-width: vars.$pre-mobile)
+    display: block
+
+.formWrapper
+  display: flex
+  flex-direction: column
+  gap: var(--space-4)
+
+  @media (max-width: vars.$pre-mobile)
+    width: 100%
 
 .form
   display: flex

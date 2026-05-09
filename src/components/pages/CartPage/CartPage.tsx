@@ -23,13 +23,17 @@ export function CartPage() {
               <div className={styles.itemPhoto}>
                 <Image src={item.image} alt={item.name} fill style={{ objectFit: 'cover' }} />
               </div>
-              <div className={styles.itemInfo}>
-                <span className={styles.itemName}>{item.name}</span>
-                <span className={styles.itemWeight}>{item.weight}</span>
+              <div className={styles.itemRight}>
+                <div className={styles.itemInfo}>
+                  <span className={styles.itemName}>{item.name}</span>
+                  <span className={styles.itemWeight}>{item.weight}</span>
+                </div>
+                <div className={styles.itemBottom}>
+                  <QuantityCounter value={item.qty} />
+                  <span className={styles.itemPrice}>{item.price}</span>
+                  <button className={styles.removeBtn}>✕</button>
+                </div>
               </div>
-              <QuantityCounter value={item.qty} />
-              <span className={styles.itemPrice}>{item.price}</span>
-              <button className={styles.removeBtn}>✕</button>
             </div>
           ))}
         </div>
@@ -41,7 +45,7 @@ export function CartPage() {
       </div>
 
       <div className={styles.orderSection}>
-        <h2>Оформление заказа</h2>
+        <h2 className={styles.orderTitle}>Оформление заказа</h2>
         <div className={styles.orderLayout}>
           <div className={styles.orderContacts}>
             <a href={SITE.contacts.phoneHref} className={styles.contactCard}>
@@ -58,7 +62,9 @@ export function CartPage() {
               <a href={SITE.socials.whatsapp.url} className={styles.socialCard}>{SITE.socials.whatsapp.label}</a>
             </div>
           </div>
-        <form className={styles.form}>
+        <div className={styles.formWrapper}>
+          <h2 className={styles.orderTitleMobile}>Оформление заказа</h2>
+          <form className={styles.form}>
           <label className={styles.field}>
             <input type="email" placeholder=" " className={styles.input} />
             <span className={styles.label}>E-mail</span>
@@ -90,7 +96,8 @@ export function CartPage() {
             <span className={styles.label}>Комментарий к заказу (необязательно)</span>
           </label>
           <button type="submit" className={cn('btn', 'btn-outline', styles.submit)}>Оформить заказ</button>
-        </form>
+          </form>
+        </div>
         </div>
       </div>
 
