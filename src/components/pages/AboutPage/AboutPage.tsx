@@ -24,6 +24,19 @@ export function AboutPage() {
         </div>
       </section>
 
+      <section className={cn(styles.section, styles.sectionNext)}>
+        <div className={styles.stagesGrid}>
+          {company.stages.map((stage, i) => (
+            <div key={i} className={styles.stageItem}>
+              <div className={styles.stagePhoto}>
+                <Image src={stage.photo} alt={`Этап ${i + 1}`} fill className={styles.stageImg} />
+              </div>
+              <p className={styles.stageText}>{stage.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className={styles.missionSection}>
         <div className={styles.missionInner}>
           <span className={styles.missionQuote}>«</span>
