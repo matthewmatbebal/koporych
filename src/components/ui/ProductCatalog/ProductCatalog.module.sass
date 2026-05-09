@@ -52,6 +52,25 @@
   color: #fff
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6)
 
+.title
+  background: none
+  border: none
+  padding: 0
+  text-align: left
+  cursor: default
+
+.titleActive
+  cursor: pointer
+
+  h2
+    text-decoration: underline
+    text-decoration-thickness: 1px
+    text-decoration-color: var(--color-text-muted)
+    text-underline-offset: 6px
+
+  &:hover h2
+    text-decoration-color: var(--color-text)
+
 .grid
   display: grid
   grid-template-columns: repeat(3, 1fr)

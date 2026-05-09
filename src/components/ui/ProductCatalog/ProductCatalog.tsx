@@ -53,7 +53,11 @@ export function ProductCatalog({ products, allLabel, catalogLink, categoryImages
           )
         })}
       </div>
-      {title && <h2>{title}</h2>}
+      {title && (
+        <button className={cn(styles.title, { [styles.titleActive]: !!active })} onClick={() => setActive(null)}>
+          <h2>{title}</h2>
+        </button>
+      )}
       {filtered.length > 0 ? (
         <div className={styles.grid}>
           {filtered.map(p => (
