@@ -61,6 +61,9 @@ export function Header() {
 
                 <div className={styles.actions}>
                     <button className={styles.searchBtn}>Поиск</button>
+                    <a href={SITE.contacts.phoneHref} className={styles.phoneBtn}>
+                        {SITE.contacts.phone}
+                    </a>
                     <Link href="/cart" className={styles.cartBtn} aria-label="Корзина">
                         <CartIcon />
                         <span className={styles.cartCount}>0</span>

@@ -17,7 +17,7 @@
   border-bottom-color: var(--color-border)
 
 .headerLight
-  .logo, .navLink, .searchBtn, .cartBtn
+  .logo, .navLink, .searchBtn, .phoneBtn, .cartBtn
     color: rgba(255, 255, 255, 0.9)
     font-weight: 600
 
@@ -82,9 +82,12 @@
 
 .actions
   display: flex
-  gap: var(--space-3)
+  gap: var(--space-6)
   align-items: center
   margin-left: auto
+
+  @media (max-width: 999px)
+    gap: var(--space-3)
 
 .searchBtn
   background: none
@@ -100,6 +103,22 @@
 
   &:hover
     color: var(--color-text)
+
+.phoneBtn
+  display: flex
+  align-items: center
+  color: var(--color-text-muted)
+  font-size: var(--text-body)
+  font-weight: 500
+  letter-spacing: 0.04em
+  transition: color 0.15s
+
+  &:hover
+    color: var(--color-text)
+
+.phoneBtn
+  @media (max-width: 999px)
+    display: none
 
 .cartBtn
   display: flex

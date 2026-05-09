@@ -41,6 +41,10 @@ export function MobileMenu({ isLight }: MobileMenuProps) {
                         </Link>
                     )
                 })}
+                <div className={styles.divider} />
+                <a href={SITE.contacts.phoneHref} className={styles.phone}>
+                    {SITE.contacts.phone}
+                </a>
             </div>
 
             {open && <div className={styles.backdrop} onClick={() => setOpen(false)} />}
