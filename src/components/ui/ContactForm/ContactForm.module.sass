@@ -5,10 +5,29 @@
   flex-direction: column
   gap: 4px
 
+.formWrapper
+  display: flex
+  flex-direction: column
+  gap: var(--space-4)
+
+  @media (max-width: vars.$pre-mobile)
+    width: 100%
+
 .titleContainer
   display: flex
   flex-direction: column
   gap: var(--space-2)
+
+  @media (max-width: vars.$pre-mobile)
+    display: none
+
+.titleMobile
+  display: none
+  flex-direction: column
+  gap: var(--space-2)
+
+  @media (max-width: vars.$pre-mobile)
+    display: flex
 
 .layout
   display: block
@@ -21,8 +40,8 @@
 
   @media (max-width: vars.$pre-mobile)
     display: flex
-    flex-direction: column-reverse
-    gap: var(--space-6)
+    flex-direction: column
+    gap: var(--space-8)
 
 .left
   display: flex

@@ -33,7 +33,12 @@ export function ContactForm({ title, subtitle, contacts = 'default' }: { title?:
             )}
           </div>
         )}
-        <form className={styles.form}>
+        <div className={styles.formWrapper}>
+          <div className={styles.titleMobile}>
+            {title && <h2>{title}</h2>}
+            {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+          </div>
+          <form className={styles.form}>
           <label className={styles.field}>
             <input type="email" placeholder=" " className={styles.input} />
             <span className={styles.label}>E-mail</span>
@@ -51,7 +56,8 @@ export function ContactForm({ title, subtitle, contacts = 'default' }: { title?:
             <span className={styles.label}>Ваш вопрос</span>
           </label>
           <button type="submit" className={cn('btn-outline', 'btn', styles.submit)}>Отправить</button>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   )
