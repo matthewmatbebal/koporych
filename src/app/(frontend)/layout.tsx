@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import type { Metadata } from 'next'
 import { M_PLUS_1p } from 'next/font/google'
 import { Header } from '@/components/layout/Header/Header'
