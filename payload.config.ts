@@ -5,7 +5,7 @@ import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
-import * as migration_20260510_000000_init from '@/migrations/20260510_000000_init'
+import { migrations } from '@/migrations'
 import { Media } from '@/payload/collections/Media'
 import { Categories } from '@/payload/collections/Categories'
 import { Products } from '@/payload/collections/Products'
@@ -40,7 +40,7 @@ export default buildConfig({
       url: process.env.DATABASE_URL || `file:${path.resolve(dirname, 'database.db')}`,
     },
     push: true,
-    prodMigrations: [migration_20260510_000000_init],
+    prodMigrations: migrations,
   }),
   sharp,
   typescript: {
