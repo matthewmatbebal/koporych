@@ -4,6 +4,7 @@ import { HOME_PAGE } from '@/lib/mock/home'
 import { COOPERATION_PAGE } from '@/lib/mock/cooperation'
 import { DELIVERY_PAGE } from '@/lib/mock/delivery'
 import { CONTACTS_PAGE } from '@/lib/mock/contacts'
+import { EXCURSIONS_PAGE } from '@/lib/mock/excursions'
 import { getPayloadClient } from './client'
 
 // ─── Типы ────────────────────────────────────────────────
@@ -282,15 +283,13 @@ export async function getContactsPage(): Promise<{ title: string }> {
 // ─── ExcursionsPage ───────────────────────────────────────
 
 export async function getExcursionsPage(): Promise<ExcursionsData> {
-  const fallback: ExcursionsData = {
-    enabled: false,
-    hero: { image: '', title: '', subtitle: '' },
-    events: [],
-  }
+  const fallback: ExcursionsData = EXCURSIONS_PAGE
 
   try {
     const payload = await getPayloadClient()
     const data = await payload.findGlobal({ slug: 'excursions-page', depth: 1 })
+
+    if (!data.hero?.title) return fallback
 
     return {
       enabled: data.enabled === true,
