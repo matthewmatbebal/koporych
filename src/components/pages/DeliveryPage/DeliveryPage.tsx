@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import { DELIVERY_PAGE } from '@/lib/mock/delivery'
+import { getDeliveryPage } from '@/lib/payload/globals'
 import styles from './DeliveryPage.module.sass'
 
-export function DeliveryPage() {
-  const { hero, deliveryMethods, paymentMethods, requisites } = DELIVERY_PAGE
+export async function DeliveryPage() {
+  const { hero, deliveryMethods, paymentMethods, requisites } = await getDeliveryPage()
 
   return (
     <div className={styles.page}>

@@ -10,7 +10,7 @@ export const DeliveryPageGlobal: GlobalConfig = {
       label: 'Баннер',
       fields: [
         { name: 'image', type: 'upload', relationTo: 'media', label: 'Изображение' },
-        { name: 'title', type: 'text', label: 'Заголовок' },
+        { name: 'title', type: 'text', label: 'Заголовок', required: true },
         { name: 'subtitle', type: 'text', label: 'Подзаголовок' },
       ],
     },

@@ -1,18 +1,23 @@
 import { ProductCatalog } from '@/components/ui/ProductCatalog/ProductCatalog'
-import { PRODUCTS } from '@/lib/products'
-import { HOME_PAGE } from '@/lib/mock/home'
+import { getFeaturedProducts } from '@/lib/payload/products'
+import { getCategoryImages } from '@/lib/payload/categories'
+import { getHomePage } from '@/lib/payload/globals'
 import styles from './HomePage.module.sass'
 
-const FEATURED = PRODUCTS.filter(p => p.featured)
+export async function FeaturedSection() {
+  const [products, homePage, categoryImages] = await Promise.all([
+    getFeaturedProducts(),
+    getHomePage(),
+    getCategoryImages(),
+  ])
 
-export function FeaturedSection() {
   return (
     <section className={styles.section}>
       <ProductCatalog
-        products={FEATURED}
-        title={HOME_PAGE.featured.title}
-        catalogLink={HOME_PAGE.featured.catalogLink}
-        categoryImages={HOME_PAGE.featured.categoryImages}
+        products={products}
+        title={homePage.featured.title}
+        catalogLink={homePage.featured.catalogLink}
+        categoryImages={categoryImages}
       />
     </section>
   )

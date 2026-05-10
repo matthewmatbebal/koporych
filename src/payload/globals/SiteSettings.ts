@@ -20,7 +20,7 @@ export const SiteSettings: GlobalConfig = {
       type: 'group',
       label: 'Контакты',
       fields: [
-        { name: 'phone', type: 'text', label: 'Телефон' },
+        { name: 'phone', type: 'text', label: 'Телефон', required: true },
         { name: 'email', type: 'email', label: 'Email' },
         { name: 'address', type: 'text', label: 'Адрес' },
       ],

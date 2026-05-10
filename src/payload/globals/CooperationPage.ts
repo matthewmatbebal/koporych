@@ -5,7 +5,7 @@ export const CooperationPageGlobal: GlobalConfig = {
   label: 'Страница «Сотрудничество»',
   fields: [
     { name: 'photo', type: 'upload', relationTo: 'media', label: 'Фото' },
-    { name: 'title', type: 'text', label: 'Заголовок' },
+    { name: 'title', type: 'text', label: 'Заголовок', required: true },
     { name: 'intro', type: 'textarea', label: 'Вводный текст' },
     {
       name: 'items',

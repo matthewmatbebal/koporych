@@ -8,6 +8,7 @@ export const ContactsPageGlobal: GlobalConfig = {
       name: 'title',
       type: 'text',
       label: 'Заголовок',
+      required: true,
     },
   ],
 }

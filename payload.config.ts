@@ -15,6 +15,7 @@ import { AboutPageGlobal } from '@/payload/globals/AboutPage'
 import { CooperationPageGlobal } from '@/payload/globals/CooperationPage'
 import { DeliveryPageGlobal } from '@/payload/globals/DeliveryPage'
 import { ContactsPageGlobal } from '@/payload/globals/ContactsPage'
+import { ExcursionsPageGlobal } from '@/payload/globals/ExcursionsPage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -29,12 +30,14 @@ export default buildConfig({
     CooperationPageGlobal,
     DeliveryPageGlobal,
     ContactsPageGlobal,
+    ExcursionsPageGlobal,
   ],
   secret: process.env.PAYLOAD_SECRET || 'dev-secret-change-in-production',
   db: sqliteAdapter({
     client: {
       url: process.env.DATABASE_URL || `file:${path.resolve(dirname, 'database.db')}`,
     },
+    push: true,
   }),
   sharp,
   typescript: {

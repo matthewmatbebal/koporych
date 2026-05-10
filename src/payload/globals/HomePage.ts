@@ -10,8 +10,7 @@ export const HomePageGlobal: GlobalConfig = {
       label: 'Баннер (Hero)',
       fields: [
         { name: 'image', type: 'upload', relationTo: 'media', label: 'Изображение' },
-        { name: 'title', type: 'text', label: 'Заголовок' },
-        { name: 'subtitle', type: 'text', label: 'Подзаголовок' },
+        { name: 'title', type: 'text', label: 'Заголовок', required: true },
         { name: 'buttonText', type: 'text', label: 'Текст кнопки' },
         { name: 'buttonHref', type: 'text', label: 'Ссылка кнопки' },
       ],

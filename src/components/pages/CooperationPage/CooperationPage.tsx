@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
-import { COOPERATION_PAGE } from '@/lib/mock/cooperation'
+import { getCooperationPage } from '@/lib/payload/globals'
 import styles from './CooperationPage.module.sass'
 
-export function CooperationPage() {
-  const data = COOPERATION_PAGE
+export async function CooperationPage() {
+  const data = await getCooperationPage()
 
   return (
     <div className={styles.page}>

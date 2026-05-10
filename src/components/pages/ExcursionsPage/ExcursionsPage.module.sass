@@ -1,0 +1,87 @@
+@use "@/styles/mixins"
+@use "@/styles/variables" as vars
+
+.page
+  padding-bottom: var(--space-16)
+
+// ─── Hero ─────────────────────────────────────────────────
+.hero
+  position: relative
+  width: 100%
+  height: 480px
+  overflow: hidden
+
+  @media (max-width: vars.$pre-mobile)
+    height: 320px
+
+.heroOverlay
+  position: absolute
+  inset: 0
+  background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%)
+  z-index: 1
+
+.heroContent
+  position: absolute
+  inset: 0
+  z-index: 2
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  justify-content: flex-end
+  padding: var(--space-12) var(--space-8)
+  @include mixins.container
+
+  @media (max-width: vars.$pre-mobile)
+    padding: var(--space-8) var(--space-4)
+
+.heroTitle
+  font-size: var(--text-h1)
+  font-weight: 700
+  color: #fff
+  margin-bottom: var(--space-2)
+
+.heroSub
+  font-size: var(--text-body)
+  color: rgba(255, 255, 255, 0.85)
+
+// ─── Events feed ──────────────────────────────────────────
+.events
+  @include mixins.container
+  display: flex
+  flex-direction: column
+  gap: var(--space-12)
+  padding-top: var(--space-12)
+
+.event
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: var(--space-10)
+  align-items: center
+
+  @media (max-width: vars.$pre-mobile)
+    display: flex
+    flex-direction: column
+    gap: var(--space-4)
+
+.eventPhoto
+  position: relative
+  width: 100%
+  aspect-ratio: 4 / 3
+  border-radius: var(--radius-lg)
+  overflow: hidden
+  flex-shrink: 0
+
+.eventText
+  display: flex
+  flex-direction: column
+  gap: var(--space-3)
+
+.eventCaption
+  font-size: var(--text-h3)
+  font-weight: 700
+  color: var(--color-text)
+
+.eventDescription
+  font-size: var(--text-body)
+  line-height: 1.7
+  color: var(--color-text-muted)

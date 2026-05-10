@@ -9,6 +9,17 @@ import { SITE } from '@/lib/mock/site'
 import { MobileMenu } from '@/components/layout/MobileMenu/MobileMenu'
 import styles from './Header.module.sass'
 
+interface NavItem {
+    href: string
+    label: string
+}
+
+interface HeaderProps {
+    nav: NavItem[]
+    phone: string
+    phoneHref: string
+}
+
 function CartIcon() {
     return (
         <svg viewBox="0 0 24 24" fill="none" width="22" height="22" aria-hidden>
@@ -17,7 +28,7 @@ function CartIcon() {
     )
 }
 
-export function Header() {
+export function Header({ nav, phone, phoneHref }: HeaderProps) {
     const pathname = usePathname()
     const [scrolled, setScrolled] = useState(false)
 
@@ -45,7 +56,7 @@ export function Header() {
                 </Link>
 
                 <nav className={styles.nav}>
-                    {SITE.nav.map(link => {
+                    {nav.map(link => {
                         const isActive = pathname.startsWith(link.href)
                         return (
                             <Link
@@ -61,15 +72,15 @@ export function Header() {
 
                 <div className={styles.actions}>
                     <button className={styles.searchBtn}>Поиск</button>
-                    <a href={SITE.contacts.phoneHref} className={styles.phoneBtn}>
-                        {SITE.contacts.phone}
+                    <a href={phoneHref} className={styles.phoneBtn}>
+                        {phone}
                     </a>
                     <Link href="/cart" className={styles.cartBtn} aria-label="Корзина">
                         <CartIcon />
                         <span className={styles.cartCount}>0</span>
                     </Link>
                     <div className={styles.mobileOnly}>
-                        <MobileMenu isLight={isLight} />
+                        <MobileMenu isLight={isLight} nav={nav} phone={phone} phoneHref={phoneHref} />
                     </div>
                 </div>
             </div>

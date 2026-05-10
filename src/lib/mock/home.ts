@@ -1,7 +1,7 @@
 export const HOME_PAGE = {
   hero: {
     image: '/images/banner.jpg',
-    subtitle: 'Традиционный русский чай\nиз экологически чистых мест',
+    title: 'Традиционный русский чай\nиз экологически чистых мест',
     buttonText: 'Каталог',
     buttonHref: '/catalog',
   },

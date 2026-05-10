@@ -1,13 +1,15 @@
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
-import { CONTACTS_PAGE } from '@/lib/mock/contacts'
+import { getContactsPage } from '@/lib/payload/globals'
 import styles from './ContactsPage.module.sass'
 
-export function ContactsPage() {
+export async function ContactsPage() {
+  const { title } = await getContactsPage()
+
   return (
     <div className={styles.page}>
 
       <section className={styles.section}>
-        <ContactForm title={CONTACTS_PAGE.title} contacts="full" />
+        <ContactForm title={title} contacts="full" />
       </section>
 
     </div>

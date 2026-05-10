@@ -4,14 +4,21 @@ import cn from 'classnames'
 import Link from 'next/link'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { SITE } from '@/lib/mock/site'
 import styles from './MobileMenu.module.sass'
+
+interface NavItem {
+    href: string
+    label: string
+}
 
 interface MobileMenuProps {
     isLight: boolean
+    nav: NavItem[]
+    phone: string
+    phoneHref: string
 }
 
-export function MobileMenu({ isLight }: MobileMenuProps) {
+export function MobileMenu({ isLight, nav, phone, phoneHref }: MobileMenuProps) {
     const pathname = usePathname()
     const [open, setOpen] = useState(false)
 
@@ -28,7 +35,7 @@ export function MobileMenu({ isLight }: MobileMenuProps) {
             </button>
 
             <div className={cn(styles.dropdown, { [styles.dropdownOpen]: open })}>
-                {SITE.nav.map(link => {
+                {nav.map(link => {
                     const isActive = pathname.startsWith(link.href)
                     return (
                         <Link
@@ -42,8 +49,8 @@ export function MobileMenu({ isLight }: MobileMenuProps) {
                     )
                 })}
                 <div className={styles.divider} />
-                <a href={SITE.contacts.phoneHref} className={styles.phone}>
-                    {SITE.contacts.phone}
+                <a href={phoneHref} className={styles.phone}>
+                    {phone}
                 </a>
             </div>
 

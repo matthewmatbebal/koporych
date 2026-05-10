@@ -5,15 +5,18 @@ import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
 import { ProductCard } from '@/components/ui/ProductCard/ProductCard'
 import { ProductGallery } from '@/components/ui/ProductGallery/ProductGallery'
 import { QuantityCounter } from '@/components/ui/QuantityCounter/QuantityCounter'
-import { getProductBySlug, PRODUCTS } from '@/lib/products'
+import { getProductBySlug, getAllProducts } from '@/lib/payload/products'
 import styles from './ProductPage.module.sass'
 
-export function ProductPage({ slug }: { slug: string }) {
-  const product = getProductBySlug(slug)
+export async function ProductPage({ slug }: { slug: string }) {
+  const [product, allProducts] = await Promise.all([
+    getProductBySlug(slug),
+    getAllProducts(),
+  ])
 
   if (!product) notFound()
 
-  const related = PRODUCTS.filter(p => p.slug !== slug).slice(0, 3)
+  const related = allProducts.filter(p => p.slug !== slug).slice(0, 3)
 
   return (
     <div className={styles.page}>

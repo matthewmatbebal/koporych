@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { SITE } from '@/lib/mock/site'
-import { HOME_PAGE } from '@/lib/mock/home'
+import { getHomePage } from '@/lib/payload/globals'
 import { FeaturedSection } from './FeaturedSection'
 import styles from './HomePage.module.sass'
 
-export function HomePage() {
-  const { hero, aboutPreview } = HOME_PAGE
+export async function HomePage() {
+  const { hero, aboutPreview, partners } = await getHomePage()
 
   return (
     <div className={styles.page}>
@@ -17,7 +17,7 @@ export function HomePage() {
         <div className={styles.heroContent}>
           <div className={styles.heroTop}>
             <Image src={SITE.logo} alt="Копорыч" width={148} height={148} className={styles.heroLogo} />
-            <p className={styles.heroSub}>{hero.subtitle.split('\n').map((line, i) => (
+            <p className={styles.heroSub}>{hero.title.split('\n').map((line, i) => (
               <span key={i}>{line}{i === 0 && <br />}</span>
             ))}</p>
           </div>
@@ -41,9 +41,11 @@ export function HomePage() {
         </div>
       </section>
 
-      <div className={styles.sectionMuted}>
-        <p>С нами сотрудничают — логотипы партнёров</p>
-      </div>
+      {partners.enabled && (
+        <div className={styles.sectionMuted}>
+          <p>С нами сотрудничают — логотипы партнёров</p>
+        </div>
+      )}
 
     </div>
   )

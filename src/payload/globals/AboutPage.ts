@@ -10,13 +10,15 @@ export const AboutPageGlobal: GlobalConfig = {
       label: 'Блок о компании',
       fields: [
         { name: 'photo', type: 'upload', relationTo: 'media', label: 'Фото' },
-        { name: 'title', type: 'text', label: 'Заголовок' },
+        { name: 'title', type: 'text', label: 'Заголовок', required: true },
+        { name: 'intro', type: 'textarea', label: 'Вводный текст' },
         {
-          name: 'paragraphs',
+          name: 'stages',
           type: 'array',
-          label: 'Абзацы текста',
+          label: 'Этапы производства',
           fields: [
-            { name: 'text', type: 'textarea', label: 'Текст', required: true },
+            { name: 'photo', type: 'upload', relationTo: 'media', required: true, label: 'Фото этапа' },
+            { name: 'text', type: 'textarea', required: true, label: 'Описание этапа' },
           ],
         },
       ],
@@ -28,6 +30,16 @@ export const AboutPageGlobal: GlobalConfig = {
       fields: [
         { name: 'quote', type: 'textarea', label: 'Текст цитаты' },
         { name: 'source', type: 'text', label: 'Источник (подпись)' },
+      ],
+    },
+    {
+      name: 'video',
+      type: 'group',
+      label: 'Блок с видео',
+      fields: [
+        { name: 'src', type: 'text', label: 'Путь к видео (URL или /video/...)' },
+        { name: 'title', type: 'text', label: 'Заголовок' },
+        { name: 'text', type: 'textarea', label: 'Текст' },
       ],
     },
   ],

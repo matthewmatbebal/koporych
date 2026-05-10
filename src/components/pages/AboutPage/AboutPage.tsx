@@ -1,11 +1,11 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
-import { ABOUT_PAGE } from '@/lib/mock/about'
+import { getAboutPage } from '@/lib/payload/globals'
 import styles from './AboutPage.module.sass'
 
-export function AboutPage() {
-  const { company, mission, video } = ABOUT_PAGE
+export async function AboutPage() {
+  const { company, mission, video } = await getAboutPage()
 
   return (
     <div className={styles.page}>
