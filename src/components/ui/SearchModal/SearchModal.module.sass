@@ -1,0 +1,165 @@
+@use "@/styles/variables" as vars
+
+.overlay
+  position: fixed
+  inset: 0
+  z-index: 200
+  background: rgba(0, 0, 0, 0)
+  pointer-events: none
+  transition: background 0.2s
+
+.overlayOpen
+  background: rgba(0, 0, 0, 0.4)
+  pointer-events: auto
+
+.modal
+  position: absolute
+  top: 80px
+  left: 50%
+  transform: translateX(-50%) translateY(-12px) scale(0.97)
+  transform-origin: top center
+  width: 100%
+  max-width: 580px
+  background: var(--color-surface)
+  border: 1px solid var(--color-border)
+  border-radius: var(--radius-lg)
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.14)
+  overflow: hidden
+  opacity: 0
+  transition: transform 0.2s, opacity 0.2s
+  pointer-events: none
+
+  @media (max-width: vars.$pre-mobile)
+    top: 12px
+    left: 12px
+    right: 12px
+    width: auto
+    transform: translateY(-12px) scale(0.97)
+    transform-origin: top center
+
+.modalOpen
+  transform: translateX(-50%) translateY(0) scale(1)
+  opacity: 1
+  pointer-events: auto
+
+  @media (max-width: vars.$pre-mobile)
+    transform: translateY(0) scale(1)
+
+.inputWrap
+  display: flex
+  align-items: center
+  gap: var(--space-3)
+  padding: var(--space-6) var(--space-4)
+  border-bottom: 1px solid var(--color-border)
+
+.searchIcon
+  color: var(--color-text-muted)
+  flex-shrink: 0
+
+.input
+  flex: 1
+  background: none
+  border: none
+  outline: none
+  font-family: inherit
+  font-size: var(--text-h3)
+  color: var(--color-text)
+  padding: var(--space-3) var(--space-2)
+
+  &::placeholder
+    color: var(--color-text-muted)
+
+  &::-webkit-search-cancel-button
+    display: none
+
+.closeBtn
+  background: none
+  border: none
+  cursor: pointer
+  font-family: inherit
+  font-size: var(--text-body)
+  color: var(--color-text-muted)
+  padding: var(--space-2)
+  line-height: 1
+  flex-shrink: 0
+  transition: color 0.15s
+
+  &:hover
+    color: var(--color-text)
+
+.body
+  min-height: 60px
+  max-height: 440px
+  overflow-y: auto
+
+.hint
+  padding: var(--space-4) var(--space-6)
+  color: var(--color-text-muted)
+  font-size: var(--text-body)
+
+.results
+  padding: var(--space-2) 0
+
+.group
+  display: flex
+  flex-direction: column
+
+.groupLabel
+  font-size: var(--text-small)
+  font-weight: 700
+  letter-spacing: 0.06em
+  text-transform: uppercase
+  color: var(--color-text-muted)
+  padding: var(--space-3) var(--space-6) var(--space-2)
+
+.resultItem
+  display: flex
+  align-items: center
+  gap: var(--space-3)
+  padding: var(--space-3) var(--space-6)
+  transition: background 0.15s
+  cursor: pointer
+
+  &:hover
+    background: var(--color-bg)
+
+.productThumb
+  position: relative
+  width: 40px
+  height: 40px
+  border-radius: var(--radius-sm)
+  overflow: hidden
+  background: var(--color-bg)
+  flex-shrink: 0
+
+.pageIcon
+  width: 40px
+  height: 40px
+  border-radius: var(--radius-sm)
+  background: var(--color-bg)
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-shrink: 0
+  color: var(--color-text-muted)
+
+.resultText
+  display: flex
+  flex-direction: column
+  gap: 2px
+  min-width: 0
+
+.resultTitle
+  font-size: var(--text-body)
+  font-weight: 600
+  color: var(--color-text)
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.resultSub
+  font-size: var(--text-small)
+  color: var(--color-text-muted)
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis

@@ -7,6 +7,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { SITE } from '@/lib/mock/site'
 import { MobileMenu } from '@/components/layout/MobileMenu/MobileMenu'
+import { SearchModal } from '@/components/ui/SearchModal/SearchModal'
 import { useCartStore } from '@/store/cartStore'
 import styles from './Header.module.sass'
 
@@ -34,6 +35,7 @@ export function Header({ nav, phone, phoneHref }: HeaderProps) {
     const router = useRouter()
     const [scrolled, setScrolled] = useState(false)
     const [popupOpen, setPopupOpen] = useState(false)
+    const [searchOpen, setSearchOpen] = useState(false)
     const cartWrapRef = useRef<HTMLDivElement>(null)
     const cartCount = useCartStore(state => state.totalCount())
 
@@ -95,7 +97,7 @@ export function Header({ nav, phone, phoneHref }: HeaderProps) {
                 </nav>
 
                 <div className={styles.actions}>
-                    <button className={styles.searchBtn}>Поиск</button>
+                    <button className={styles.searchBtn} onClick={() => setSearchOpen(true)}>Поиск</button>
                     <a href={phoneHref} className={styles.phoneBtn}>
                         {phone}
                     </a>
@@ -120,6 +122,7 @@ export function Header({ nav, phone, phoneHref }: HeaderProps) {
                     </div>
                 </div>
             </div>
+        <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
         </header>
     )
 }
