@@ -2,15 +2,16 @@ import styles from './QuantityCounter.module.sass'
 
 interface QuantityCounterProps {
   value: number
+  onChange?: (value: number) => void
   className?: string
 }
 
-export function QuantityCounter({ value, className }: QuantityCounterProps) {
+export function QuantityCounter({ value, onChange, className }: QuantityCounterProps) {
   return (
     <div className={`${styles.counter}${className ? ` ${className}` : ''}`}>
-      <button className={styles.btn}>−</button>
+      <button type="button" className={styles.btn} onClick={() => onChange?.(value - 1)}>−</button>
       <span className={styles.val}>{value}</span>
-      <button className={styles.btn}>+</button>
+      <button type="button" className={styles.btn} onClick={() => onChange?.(value + 1)}>+</button>
     </div>
   )
 }

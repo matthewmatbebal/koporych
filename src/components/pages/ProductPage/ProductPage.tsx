@@ -1,10 +1,9 @@
-import cn from 'classnames'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
 import { ProductCard } from '@/components/ui/ProductCard/ProductCard'
 import { ProductGallery } from '@/components/ui/ProductGallery/ProductGallery'
-import { QuantityCounter } from '@/components/ui/QuantityCounter/QuantityCounter'
+import { AddToCartButton } from '@/components/ui/AddToCartButton/AddToCartButton'
 import { getProductBySlug, getAllProducts } from '@/lib/payload/products'
 import { getSiteData } from '@/lib/payload/globals'
 import styles from './ProductPage.module.sass'
@@ -38,10 +37,7 @@ export async function ProductPage({ slug }: { slug: string }) {
           <p>{product.description}</p>
           <p className={styles.weight}>Вес: {product.weight}</p>
           <p className={styles.price}>{product.price}</p>
-          <div className={styles.addToCart}>
-            <QuantityCounter value={1} />
-            <button className={cn('btn', 'btn-outline', styles.addBtn)}>Добавить в корзину</button>
-          </div>
+          <AddToCartButton product={product} />
         </div>
       </div>
 

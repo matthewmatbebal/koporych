@@ -3,10 +3,11 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
 import { SITE } from '@/lib/mock/site'
 import { MobileMenu } from '@/components/layout/MobileMenu/MobileMenu'
+import { useCartStore } from '@/store/cartStore'
 import styles from './Header.module.sass'
 
 interface NavItem {
@@ -30,7 +31,11 @@ function CartIcon() {
 
 export function Header({ nav, phone, phoneHref }: HeaderProps) {
     const pathname = usePathname()
+    const router = useRouter()
     const [scrolled, setScrolled] = useState(false)
+    const [popupOpen, setPopupOpen] = useState(false)
+    const cartWrapRef = useRef<HTMLDivElement>(null)
+    const cartCount = useCartStore(state => state.totalCount())
 
     useEffect(() => {
         function onScroll() {
@@ -40,6 +45,25 @@ export function Header({ nav, phone, phoneHref }: HeaderProps) {
         window.addEventListener('scroll', onScroll, { passive: true })
         return () => window.removeEventListener('scroll', onScroll)
     }, [])
+
+    useEffect(() => {
+        function onClickOutside(e: MouseEvent) {
+            if (cartWrapRef.current && !cartWrapRef.current.contains(e.target as Node)) {
+                setPopupOpen(false)
+            }
+        }
+        document.addEventListener('mousedown', onClickOutside)
+        return () => document.removeEventListener('mousedown', onClickOutside)
+    }, [])
+
+    function handleCartClick() {
+        if (cartCount === 0) {
+            setPopupOpen(o => !o)
+        } else {
+            setPopupOpen(false)
+            router.push('/cart')
+        }
+    }
 
     const isHome = pathname === '/'
     const isLight = isHome && !scrolled
@@ -75,10 +99,22 @@ export function Header({ nav, phone, phoneHref }: HeaderProps) {
                     <a href={phoneHref} className={styles.phoneBtn}>
                         {phone}
                     </a>
-                    <Link href="/cart" className={styles.cartBtn} aria-label="Корзина">
-                        <CartIcon />
-                        <span className={styles.cartCount}>0</span>
-                    </Link>
+                    <div ref={cartWrapRef} className={styles.cartWrap}>
+                        <button
+                            className={styles.cartBtn}
+                            aria-label="Корзина"
+                            onClick={handleCartClick}
+                        >
+                            <CartIcon />
+                            <span className={styles.cartCount}>{cartCount}</span>
+                        </button>
+                        <div className={cn(styles.cartPopup, { [styles.cartPopupOpen]: popupOpen })}>
+                            <span className={styles.cartPopupText}>Корзина пуста</span>
+                            <Link href="/catalog" className={styles.cartPopupLink} onClick={() => setPopupOpen(false)}>
+                                В каталог
+                            </Link>
+                        </div>
+                    </div>
                     <div className={styles.mobileOnly}>
                         <MobileMenu isLight={isLight} nav={nav} phone={phone} phoneHref={phoneHref} />
                     </div>

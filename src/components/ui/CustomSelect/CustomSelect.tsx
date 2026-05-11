@@ -8,9 +8,10 @@ interface CustomSelectProps {
   label: string
   options: string[]
   name?: string
+  onChange?: (value: string) => void
 }
 
-export function CustomSelect({ label, options, name }: CustomSelectProps) {
+export function CustomSelect({ label, options, name, onChange }: CustomSelectProps) {
   const [value, setValue] = useState('')
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -28,6 +29,7 @@ export function CustomSelect({ label, options, name }: CustomSelectProps) {
   function select(opt: string) {
     setValue(opt)
     setOpen(false)
+    onChange?.(opt)
   }
 
   return (
