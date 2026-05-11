@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import type SMTPTransport from 'nodemailer/lib/smtp-transport'
 
 interface CartItem {
   id: string
@@ -120,7 +121,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: 'Mail not configured' }, { status: 500 })
     }
 
-    const transporter = nodemailer.createTransport({
+    const transportOptions: SMTPTransport.Options & { family?: number } = {
       host: 'smtp.yandex.ru',
       port: 587,
       secure: false,
@@ -129,7 +130,8 @@ export async function POST(req: Request) {
       connectionTimeout: 10000,
       greetingTimeout: 10000,
       socketTimeout: 15000,
-    })
+    }
+    const transporter = nodemailer.createTransport(transportOptions)
 
     await transporter.sendMail({
       from: `"Копорыч — заказы" <${smtpUser}>`,
