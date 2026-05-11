@@ -122,9 +122,12 @@ export async function POST(req: Request) {
 
     const transporter = nodemailer.createTransport({
       host: 'smtp.yandex.ru',
-      port: 465,
-      secure: true,
+      port: 587,
+      secure: false,
       auth: { user: smtpUser, pass: smtpPass },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
     })
 
     await transporter.sendMail({
