@@ -124,6 +124,7 @@ export async function POST(req: Request) {
       host: 'smtp.yandex.ru',
       port: 587,
       secure: false,
+      family: 4,
       auth: { user: smtpUser, pass: smtpPass },
       connectionTimeout: 10000,
       greetingTimeout: 10000,
