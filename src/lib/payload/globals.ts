@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { SITE } from '@/lib/mock/site'
 import { ABOUT_PAGE } from '@/lib/mock/about'
 import { HOME_PAGE } from '@/lib/mock/home'
@@ -93,7 +94,7 @@ const SITE_FALLBACK: SiteData = {
 
 // ─── SiteSettings ────────────────────────────────────────
 
-export async function getSiteData(): Promise<SiteData> {
+export const getSiteData = cache(async function getSiteData(): Promise<SiteData> {
   try {
     const payload = await getPayloadClient()
     const data = await payload.findGlobal({ slug: 'site-settings' })
@@ -125,7 +126,7 @@ export async function getSiteData(): Promise<SiteData> {
   } catch {
     return SITE_FALLBACK
   }
-}
+})
 
 // ─── HomePage ─────────────────────────────────────────────
 

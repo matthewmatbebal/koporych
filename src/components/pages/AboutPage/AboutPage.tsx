@@ -1,11 +1,11 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
-import { getAboutPage } from '@/lib/payload/globals'
+import { getAboutPage, getSiteData } from '@/lib/payload/globals'
 import styles from './AboutPage.module.sass'
 
 export async function AboutPage() {
-  const { company, mission, video } = await getAboutPage()
+  const [{ company, mission, video }, siteData] = await Promise.all([getAboutPage(), getSiteData()])
 
   return (
     <div className={styles.page}>
@@ -58,7 +58,7 @@ export async function AboutPage() {
       </section>
 
       <section className={cn(styles.section, styles.sectionNext)}>
-        <ContactForm title="Напишите нам" contacts={"full"} />
+        <ContactForm title="Напишите нам" contacts={"full"} contactData={siteData} />
       </section>
 
     </div>

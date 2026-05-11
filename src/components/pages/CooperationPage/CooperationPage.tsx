@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
-import { getCooperationPage } from '@/lib/payload/globals'
+import { getCooperationPage, getSiteData } from '@/lib/payload/globals'
 import styles from './CooperationPage.module.sass'
 
 export async function CooperationPage() {
-  const data = await getCooperationPage()
+  const [data, siteData] = await Promise.all([getCooperationPage(), getSiteData()])
 
   return (
     <div className={styles.page}>
@@ -23,7 +23,7 @@ export async function CooperationPage() {
           <p>{data.outro}</p>
         </div>
       </div>
-      <ContactForm title="Напишите нам" contacts={"full"}/>
+      <ContactForm title="Напишите нам" contacts={"full"} contactData={siteData}/>
     </div>
   )
 }

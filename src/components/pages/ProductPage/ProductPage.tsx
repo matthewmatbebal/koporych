@@ -6,12 +6,14 @@ import { ProductCard } from '@/components/ui/ProductCard/ProductCard'
 import { ProductGallery } from '@/components/ui/ProductGallery/ProductGallery'
 import { QuantityCounter } from '@/components/ui/QuantityCounter/QuantityCounter'
 import { getProductBySlug, getAllProducts } from '@/lib/payload/products'
+import { getSiteData } from '@/lib/payload/globals'
 import styles from './ProductPage.module.sass'
 
 export async function ProductPage({ slug }: { slug: string }) {
-  const [product, allProducts] = await Promise.all([
+  const [product, allProducts, siteData] = await Promise.all([
     getProductBySlug(slug),
     getAllProducts(),
+    getSiteData(),
   ])
 
   if (!product) notFound()
@@ -56,7 +58,7 @@ export async function ProductPage({ slug }: { slug: string }) {
 
       <div className={styles.divider} />
 
-      <ContactForm title="Не нашли что искали?" subtitle="Ответим на любые вопросы и поможем подобрать чай" contacts={"full"}/>
+      <ContactForm title="Не нашли что искали?" subtitle="Ответим на любые вопросы и поможем подобрать чай" contacts={"full"} contactData={siteData}/>
 
     </div>
   )
