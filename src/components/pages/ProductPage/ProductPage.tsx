@@ -6,12 +6,14 @@ import { ProductGallery } from '@/components/ui/ProductGallery/ProductGallery'
 import { AddToCartButton } from '@/components/ui/AddToCartButton/AddToCartButton'
 import { getProductBySlug, getAllProducts } from '@/lib/payload/products'
 import { getSiteData } from '@/lib/payload/globals'
+import { isMobileRequest } from '@/lib/device'
 import styles from './ProductPage.module.sass'
 
 export async function ProductPage({ slug }: { slug: string }) {
+  const isMobile = await isMobileRequest()
   const [product, allProducts, siteData] = await Promise.all([
-    getProductBySlug(slug),
-    getAllProducts(),
+    getProductBySlug(slug, isMobile),
+    getAllProducts(isMobile),
     getSiteData(),
   ])
 

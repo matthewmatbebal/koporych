@@ -2,11 +2,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { SITE } from '@/lib/mock/site'
 import { getHomePage } from '@/lib/payload/globals'
+import { isMobileRequest } from '@/lib/device'
 import { FeaturedSection } from './FeaturedSection'
 import styles from './HomePage.module.sass'
 
 export async function HomePage() {
-  const { hero, aboutPreview, partners } = await getHomePage()
+  const isMobile = await isMobileRequest()
+  const { hero, aboutPreview, partners, featured } = await getHomePage(isMobile)
 
   return (
     <div className={styles.page}>
@@ -25,7 +27,7 @@ export async function HomePage() {
         </div>
       </section>
 
-      <FeaturedSection />
+      <FeaturedSection isMobile={isMobile} featuredTitle={featured.title} catalogLink={featured.catalogLink} />
 
       <section className={styles.aboutSection}>
         <div className={styles.aboutPhoto}>

@@ -1,9 +1,11 @@
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
 import { getContactsPage, getSiteData } from '@/lib/payload/globals'
+import { isMobileRequest } from '@/lib/device'
 import styles from './ContactsPage.module.sass'
 
 export async function ContactsPage() {
-  const [{ title }, siteData] = await Promise.all([getContactsPage(), getSiteData()])
+  const isMobile = await isMobileRequest()
+  const [{ title }, siteData] = await Promise.all([getContactsPage(isMobile), getSiteData()])
 
   return (
     <div className={styles.page}>

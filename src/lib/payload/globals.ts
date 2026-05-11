@@ -6,6 +6,7 @@ import { COOPERATION_PAGE } from '@/lib/mock/cooperation'
 import { DELIVERY_PAGE } from '@/lib/mock/delivery'
 import { CONTACTS_PAGE } from '@/lib/mock/contacts'
 import { EXCURSIONS_PAGE } from '@/lib/mock/excursions'
+import { mobileField } from '@/lib/mobileField'
 import { getPayloadClient } from './client'
 
 // ─── Типы ────────────────────────────────────────────────
@@ -80,7 +81,6 @@ function buildPhoneHref(phone: string): string {
   return 'tel:+' + phone.replace(/\D/g, '')
 }
 
-// Гарантирует тип string: берёт значение из Payload если строка, иначе fallback
 function str(val: any, fallback: string): string {
   return typeof val === 'string' ? val : fallback
 }
@@ -130,7 +130,7 @@ export const getSiteData = cache(async function getSiteData(): Promise<SiteData>
 
 // ─── HomePage ─────────────────────────────────────────────
 
-export async function getHomePage(): Promise<HomePageData> {
+export async function getHomePage(isMobile = false): Promise<HomePageData> {
   const fallback: HomePageData = {
     hero: HOME_PAGE.hero,
     aboutPreview: HOME_PAGE.aboutPreview,
@@ -147,17 +147,17 @@ export async function getHomePage(): Promise<HomePageData> {
     return {
       hero: {
         image: mediaUrl(data.hero.image) || HOME_PAGE.hero.image,
-        title: str(data.hero.title, HOME_PAGE.hero.title),
-        buttonText: str(data.hero.buttonText, HOME_PAGE.hero.buttonText),
-        buttonHref: str(data.hero.buttonHref, HOME_PAGE.hero.buttonHref),
+        title: mobileField(isMobile, data.hero.titleMobile, str(data.hero.title, HOME_PAGE.hero.title)),
+        buttonText: mobileField(isMobile, data.hero.buttonTextMobile, str(data.hero.buttonText, HOME_PAGE.hero.buttonText)),
+        buttonHref: HOME_PAGE.hero.buttonHref,
       },
       aboutPreview: {
         image: mediaUrl(data.aboutPreview?.image) || HOME_PAGE.aboutPreview.image,
-        eyebrow: str(data.aboutPreview?.eyebrow, HOME_PAGE.aboutPreview.eyebrow),
-        title: str(data.aboutPreview?.title, HOME_PAGE.aboutPreview.title),
-        text: str(data.aboutPreview?.text, HOME_PAGE.aboutPreview.text),
-        buttonText: str(data.aboutPreview?.buttonText, HOME_PAGE.aboutPreview.buttonText),
-        buttonHref: str(data.aboutPreview?.buttonHref, HOME_PAGE.aboutPreview.buttonHref),
+        eyebrow: mobileField(isMobile, data.aboutPreview?.eyebrowMobile, str(data.aboutPreview?.eyebrow, HOME_PAGE.aboutPreview.eyebrow)),
+        title: mobileField(isMobile, data.aboutPreview?.titleMobile, str(data.aboutPreview?.title, HOME_PAGE.aboutPreview.title)),
+        text: mobileField(isMobile, data.aboutPreview?.textMobile, str(data.aboutPreview?.text, HOME_PAGE.aboutPreview.text)),
+        buttonText: mobileField(isMobile, data.aboutPreview?.buttonTextMobile, str(data.aboutPreview?.buttonText, HOME_PAGE.aboutPreview.buttonText)),
+        buttonHref: HOME_PAGE.aboutPreview.buttonHref,
       },
       featured: {
         title: HOME_PAGE.featured.title,
@@ -174,7 +174,7 @@ export async function getHomePage(): Promise<HomePageData> {
 
 // ─── AboutPage ────────────────────────────────────────────
 
-export async function getAboutPage(): Promise<AboutPageData> {
+export async function getAboutPage(isMobile = false): Promise<AboutPageData> {
   try {
     const payload = await getPayloadClient()
     const data = await payload.findGlobal({ slug: 'about-page', depth: 1 })
@@ -186,22 +186,22 @@ export async function getAboutPage(): Promise<AboutPageData> {
         photos: mediaUrl(data.company.photo)
           ? [mediaUrl(data.company.photo)]
           : ABOUT_PAGE.company.photos,
-        title: str(data.company.title, ABOUT_PAGE.company.title),
-        intro: str(data.company.intro, ABOUT_PAGE.company.intro),
+        title: mobileField(isMobile, data.company.titleMobile, str(data.company.title, ABOUT_PAGE.company.title)),
+        intro: mobileField(isMobile, data.company.introMobile, str(data.company.intro, ABOUT_PAGE.company.intro)),
         facts: ABOUT_PAGE.company.facts,
-        stages: (data.company.stages ?? []).map((s: any) => ({
-          photo: mediaUrl(s.photo),
-          text: str(s.text, ''),
+        stages: (data.company.stages ?? []).map((stage: any) => ({
+          photo: mediaUrl(stage.photo),
+          text: mobileField(isMobile, stage.textMobile, str(stage.text, '')),
         })),
       },
       mission: {
-        quote: str(data.mission?.quote, ABOUT_PAGE.mission.quote),
-        source: str(data.mission?.source, ABOUT_PAGE.mission.source),
+        quote: mobileField(isMobile, data.mission?.quoteMobile, str(data.mission?.quote, ABOUT_PAGE.mission.quote)),
+        source: mobileField(isMobile, data.mission?.sourceMobile, str(data.mission?.source, ABOUT_PAGE.mission.source)),
       },
       video: {
         src: str(data.video?.src, ABOUT_PAGE.video.src),
-        title: str(data.video?.title, ABOUT_PAGE.video.title),
-        text: str(data.video?.text, ABOUT_PAGE.video.text),
+        title: mobileField(isMobile, data.video?.titleMobile, str(data.video?.title, ABOUT_PAGE.video.title)),
+        text: mobileField(isMobile, data.video?.textMobile, str(data.video?.text, ABOUT_PAGE.video.text)),
       },
     }
   } catch {
@@ -211,7 +211,7 @@ export async function getAboutPage(): Promise<AboutPageData> {
 
 // ─── CooperationPage ──────────────────────────────────────
 
-export async function getCooperationPage(): Promise<CooperationPageData> {
+export async function getCooperationPage(isMobile = false): Promise<CooperationPageData> {
   try {
     const payload = await getPayloadClient()
     const data = await payload.findGlobal({ slug: 'cooperation-page', depth: 1 })
@@ -220,13 +220,13 @@ export async function getCooperationPage(): Promise<CooperationPageData> {
 
     return {
       photo: mediaUrl(data.photo) || COOPERATION_PAGE.photo,
-      title: str(data.title, COOPERATION_PAGE.title),
-      intro: str(data.intro, COOPERATION_PAGE.intro),
+      title: mobileField(isMobile, data.titleMobile, str(data.title, COOPERATION_PAGE.title)),
+      intro: mobileField(isMobile, data.introMobile, str(data.intro, COOPERATION_PAGE.intro)),
       items: (data.items ?? []).map((item: any) => ({
-        label: str(item.label, ''),
-        description: str(item.description, ''),
+        label: mobileField(isMobile, item.labelMobile, str(item.label, '')),
+        description: mobileField(isMobile, item.descriptionMobile, str(item.description, '')),
       })),
-      outro: str(data.outro, COOPERATION_PAGE.outro),
+      outro: mobileField(isMobile, data.outroMobile, str(data.outro, COOPERATION_PAGE.outro)),
     }
   } catch {
     return COOPERATION_PAGE
@@ -235,7 +235,7 @@ export async function getCooperationPage(): Promise<CooperationPageData> {
 
 // ─── DeliveryPage ─────────────────────────────────────────
 
-export async function getDeliveryPage(): Promise<DeliveryPageData> {
+export async function getDeliveryPage(isMobile = false): Promise<DeliveryPageData> {
   try {
     const payload = await getPayloadClient()
     const data = await payload.findGlobal({ slug: 'delivery-page', depth: 1 })
@@ -245,16 +245,16 @@ export async function getDeliveryPage(): Promise<DeliveryPageData> {
     return {
       hero: {
         image: mediaUrl(data.hero.image) || DELIVERY_PAGE.hero.image,
-        title: str(data.hero.title, DELIVERY_PAGE.hero.title),
-        subtitle: str(data.hero.subtitle, DELIVERY_PAGE.hero.subtitle),
+        title: mobileField(isMobile, data.hero.titleMobile, str(data.hero.title, DELIVERY_PAGE.hero.title)),
+        subtitle: mobileField(isMobile, data.hero.subtitleMobile, str(data.hero.subtitle, DELIVERY_PAGE.hero.subtitle)),
       },
-      deliveryMethods: (data.deliveryMethods ?? []).map((m: any) => ({
-        name: str(m.name, ''),
-        meta: str(m.meta, ''),
+      deliveryMethods: (data.deliveryMethods ?? []).map((method: any) => ({
+        name: mobileField(isMobile, method.nameMobile, str(method.name, '')),
+        meta: mobileField(isMobile, method.metaMobile, str(method.meta, '')),
       })),
-      paymentMethods: (data.paymentMethods ?? []).map((m: any) => ({
-        name: str(m.name, ''),
-        meta: str(m.meta, ''),
+      paymentMethods: (data.paymentMethods ?? []).map((method: any) => ({
+        name: mobileField(isMobile, method.nameMobile, str(method.name, '')),
+        meta: mobileField(isMobile, method.metaMobile, str(method.meta, '')),
       })),
       requisites: {
         companyName: str(data.requisites?.companyName, DELIVERY_PAGE.requisites.companyName),
@@ -271,11 +271,13 @@ export async function getDeliveryPage(): Promise<DeliveryPageData> {
 
 // ─── ContactsPage ─────────────────────────────────────────
 
-export async function getContactsPage(): Promise<{ title: string }> {
+export async function getContactsPage(isMobile = false): Promise<{ title: string }> {
   try {
     const payload = await getPayloadClient()
     const data = await payload.findGlobal({ slug: 'contacts-page' })
-    return { title: str(data.title, CONTACTS_PAGE.title) }
+    return {
+      title: mobileField(isMobile, data.titleMobile, str(data.title, CONTACTS_PAGE.title)),
+    }
   } catch {
     return CONTACTS_PAGE
   }
@@ -283,7 +285,7 @@ export async function getContactsPage(): Promise<{ title: string }> {
 
 // ─── ExcursionsPage ───────────────────────────────────────
 
-export async function getExcursionsPage(): Promise<ExcursionsData> {
+export async function getExcursionsPage(isMobile = false): Promise<ExcursionsData> {
   const fallback: ExcursionsData = EXCURSIONS_PAGE
 
   try {
@@ -296,13 +298,13 @@ export async function getExcursionsPage(): Promise<ExcursionsData> {
       enabled: data.enabled === true,
       hero: {
         image: mediaUrl(data.hero?.image),
-        title: str(data.hero?.title, ''),
-        subtitle: str(data.hero?.subtitle, ''),
+        title: mobileField(isMobile, data.hero?.titleMobile, str(data.hero?.title, '')),
+        subtitle: mobileField(isMobile, data.hero?.subtitleMobile, str(data.hero?.subtitle, '')),
       },
-      events: (data.events ?? []).map((e: any) => ({
-        photo: mediaUrl(e.photo),
-        caption: str(e.caption, ''),
-        description: str(e.description, ''),
+      events: (data.events ?? []).map((event: any) => ({
+        photo: mediaUrl(event.photo),
+        caption: mobileField(isMobile, event.captionMobile, str(event.caption, '')),
+        description: mobileField(isMobile, event.descriptionMobile, str(event.description, '')),
       })),
     }
   } catch {

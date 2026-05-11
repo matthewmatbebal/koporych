@@ -13,6 +13,11 @@ export const Products: CollectionConfig = {
       label: 'Название',
     },
     {
+      name: 'nameMobile',
+      type: 'text',
+      label: 'Название (мобильное)',
+    },
+    {
       name: 'slug',
       type: 'text',
       required: true,
@@ -31,9 +36,19 @@ export const Products: CollectionConfig = {
       },
     },
     {
+      name: 'subMobile',
+      type: 'text',
+      label: 'Короткое описание (мобильное)',
+    },
+    {
       name: 'description',
       type: 'textarea',
       label: 'Описание',
+    },
+    {
+      name: 'descriptionMobile',
+      type: 'textarea',
+      label: 'Описание (мобильное)',
     },
     {
       name: 'price',

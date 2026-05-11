@@ -3,18 +3,18 @@ import type { Product } from '@/lib/products'
 import { getPayloadClient } from './client'
 import { adaptProduct } from './adapters'
 
-export async function getAllProducts(): Promise<Product[]> {
+export async function getAllProducts(isMobile = false): Promise<Product[]> {
   try {
     const payload = await getPayloadClient()
     const result = await payload.find({ collection: 'products', limit: 100, depth: 2 })
     if (result.docs.length === 0) return PRODUCTS
-    return result.docs.map(adaptProduct)
+    return result.docs.map(doc => adaptProduct(doc, isMobile))
   } catch {
     return PRODUCTS
   }
 }
 
-export async function getFeaturedProducts(): Promise<Product[]> {
+export async function getFeaturedProducts(isMobile = false): Promise<Product[]> {
   try {
     const payload = await getPayloadClient()
     const result = await payload.find({
@@ -24,13 +24,13 @@ export async function getFeaturedProducts(): Promise<Product[]> {
       depth: 2,
     })
     if (result.docs.length === 0) return PRODUCTS.filter(p => p.featured)
-    return result.docs.map(adaptProduct)
+    return result.docs.map(doc => adaptProduct(doc, isMobile))
   } catch {
     return PRODUCTS.filter(p => p.featured)
   }
 }
 
-export async function getProductBySlug(slug: string): Promise<Product | null> {
+export async function getProductBySlug(slug: string, isMobile = false): Promise<Product | null> {
   try {
     const payload = await getPayloadClient()
     const result = await payload.find({
@@ -40,7 +40,7 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
       depth: 2,
     })
     if (result.docs.length === 0) return getMockProductBySlug(slug) ?? null
-    return adaptProduct(result.docs[0])
+    return adaptProduct(result.docs[0], isMobile)
   } catch {
     return getMockProductBySlug(slug) ?? null
   }

@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import { getDeliveryPage } from '@/lib/payload/globals'
+import { isMobileRequest } from '@/lib/device'
 import styles from './DeliveryPage.module.sass'
 
 export async function DeliveryPage() {
-  const { hero, deliveryMethods, paymentMethods, requisites } = await getDeliveryPage()
+  const isMobile = await isMobileRequest()
+  const { hero, deliveryMethods, paymentMethods, requisites } = await getDeliveryPage(isMobile)
 
   return (
     <div className={styles.page}>

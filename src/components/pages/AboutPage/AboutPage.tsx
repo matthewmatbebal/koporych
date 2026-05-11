@@ -2,10 +2,12 @@ import cn from 'classnames'
 import Image from 'next/image'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
 import { getAboutPage, getSiteData } from '@/lib/payload/globals'
+import { isMobileRequest } from '@/lib/device'
 import styles from './AboutPage.module.sass'
 
 export async function AboutPage() {
-  const [{ company, mission, video }, siteData] = await Promise.all([getAboutPage(), getSiteData()])
+  const isMobile = await isMobileRequest()
+  const [{ company, mission, video }, siteData] = await Promise.all([getAboutPage(isMobile), getSiteData()])
 
   return (
     <div className={styles.page}>

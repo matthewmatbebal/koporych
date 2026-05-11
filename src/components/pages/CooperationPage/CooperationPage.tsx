@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm'
 import { getCooperationPage, getSiteData } from '@/lib/payload/globals'
+import { isMobileRequest } from '@/lib/device'
 import styles from './CooperationPage.module.sass'
 
 export async function CooperationPage() {
-  const [data, siteData] = await Promise.all([getCooperationPage(), getSiteData()])
+  const isMobile = await isMobileRequest()
+  const [data, siteData] = await Promise.all([getCooperationPage(isMobile), getSiteData()])
 
   return (
     <div className={styles.page}>

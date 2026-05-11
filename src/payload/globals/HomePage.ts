@@ -11,8 +11,9 @@ export const HomePageGlobal: GlobalConfig = {
       fields: [
         { name: 'image', type: 'upload', relationTo: 'media', label: 'Изображение' },
         { name: 'title', type: 'textarea', label: 'Заголовок', required: true },
+        { name: 'titleMobile', type: 'textarea', label: 'Заголовок (мобильный)' },
         { name: 'buttonText', type: 'text', label: 'Текст кнопки' },
-        { name: 'buttonHref', type: 'text', label: 'Ссылка кнопки' },
+        { name: 'buttonTextMobile', type: 'text', label: 'Текст кнопки (мобильный)' },
       ],
     },
     {
@@ -22,10 +23,13 @@ export const HomePageGlobal: GlobalConfig = {
       fields: [
         { name: 'image', type: 'upload', relationTo: 'media', label: 'Фото' },
         { name: 'eyebrow', type: 'text', label: 'Надпись над заголовком' },
+        { name: 'eyebrowMobile', type: 'text', label: 'Надпись над заголовком (мобильная)' },
         { name: 'title', type: 'text', label: 'Заголовок' },
+        { name: 'titleMobile', type: 'text', label: 'Заголовок (мобильный)' },
         { name: 'text', type: 'textarea', label: 'Текст' },
+        { name: 'textMobile', type: 'textarea', label: 'Текст (мобильный)' },
         { name: 'buttonText', type: 'text', label: 'Текст кнопки' },
-        { name: 'buttonHref', type: 'text', label: 'Ссылка кнопки' },
+        { name: 'buttonTextMobile', type: 'text', label: 'Текст кнопки (мобильный)' },
       ],
     },
     {

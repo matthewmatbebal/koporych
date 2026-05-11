@@ -1,13 +1,17 @@
 import { ProductCatalog } from '@/components/ui/ProductCatalog/ProductCatalog'
 import { getFeaturedProducts } from '@/lib/payload/products'
 import { getCategoryImages } from '@/lib/payload/categories'
-import { getHomePage } from '@/lib/payload/globals'
 import styles from './HomePage.module.sass'
 
-export async function FeaturedSection() {
-  const [products, homePage, categoryImages] = await Promise.all([
-    getFeaturedProducts(),
-    getHomePage(),
+interface FeaturedSectionProps {
+  isMobile: boolean
+  featuredTitle: string
+  catalogLink: string
+}
+
+export async function FeaturedSection({ isMobile, featuredTitle, catalogLink }: FeaturedSectionProps) {
+  const [products, categoryImages] = await Promise.all([
+    getFeaturedProducts(isMobile),
     getCategoryImages(),
   ])
 
@@ -15,8 +19,8 @@ export async function FeaturedSection() {
     <section className={styles.section}>
       <ProductCatalog
         products={products}
-        title={homePage.featured.title}
-        catalogLink={homePage.featured.catalogLink}
+        title={featuredTitle}
+        catalogLink={catalogLink}
         categoryImages={categoryImages}
       />
     </section>

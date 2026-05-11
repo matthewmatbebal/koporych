@@ -4,11 +4,7 @@ export const ContactsPageGlobal: GlobalConfig = {
   slug: 'contacts-page',
   label: 'Страница «Контакты»',
   fields: [
-    {
-      name: 'title',
-      type: 'text',
-      label: 'Заголовок',
-      required: true,
-    },
+    { name: 'title', type: 'text', label: 'Заголовок', required: true },
+    { name: 'titleMobile', type: 'text', label: 'Заголовок (мобильный)' },
   ],
 }

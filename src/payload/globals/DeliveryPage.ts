@@ -11,7 +11,9 @@ export const DeliveryPageGlobal: GlobalConfig = {
       fields: [
         { name: 'image', type: 'upload', relationTo: 'media', label: 'Изображение' },
         { name: 'title', type: 'text', label: 'Заголовок', required: true },
+        { name: 'titleMobile', type: 'text', label: 'Заголовок (мобильный)' },
         { name: 'subtitle', type: 'text', label: 'Подзаголовок' },
+        { name: 'subtitleMobile', type: 'text', label: 'Подзаголовок (мобильный)' },
       ],
     },
     {
@@ -20,7 +22,9 @@ export const DeliveryPageGlobal: GlobalConfig = {
       label: 'Способы доставки',
       fields: [
         { name: 'name', type: 'text', label: 'Название', required: true },
+        { name: 'nameMobile', type: 'text', label: 'Название (мобильное)' },
         { name: 'meta', type: 'text', label: 'Детали (сроки, цена)' },
+        { name: 'metaMobile', type: 'text', label: 'Детали (мобильные)' },
       ],
     },
     {
@@ -29,7 +33,9 @@ export const DeliveryPageGlobal: GlobalConfig = {
       label: 'Способы оплаты',
       fields: [
         { name: 'name', type: 'text', label: 'Название', required: true },
+        { name: 'nameMobile', type: 'text', label: 'Название (мобильное)' },
         { name: 'meta', type: 'text', label: 'Детали' },
+        { name: 'metaMobile', type: 'text', label: 'Детали (мобильные)' },
       ],
     },
     {
