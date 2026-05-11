@@ -17,7 +17,7 @@ export async function HomePage() {
         <div className={styles.heroContent}>
           <div className={styles.heroTop}>
             <Image src={SITE.logo} alt="Копорыч" width={148} height={148} className={styles.heroLogo} />
-            <p className={styles.heroSub}>{hero.title.split('\n').map((line, i) => (
+            <p className={styles.heroTitle}>{hero.title.split('\n').map((line, i) => (
               <span key={i}>{line}{i === 0 && <br />}</span>
             ))}</p>
           </div>
