@@ -108,7 +108,7 @@ export function Header({ nav, phone, phoneHref }: HeaderProps) {
                             onClick={handleCartClick}
                         >
                             <CartIcon />
-                            <span className={styles.cartCount}>{cartCount}</span>
+                            <span className={styles.cartCount} suppressHydrationWarning>{cartCount}</span>
                         </button>
                         <div className={cn(styles.cartPopup, { [styles.cartPopupOpen]: popupOpen })}>
                             <span className={styles.cartPopupText}>Корзина пуста</span>

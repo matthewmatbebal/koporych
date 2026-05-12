@@ -5,7 +5,7 @@ import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
-import { migrations } from '@/migrations'
+import { migrations } from '@/migrations/index'
 import { Media } from '@/payload/collections/Media'
 import { Categories } from '@/payload/collections/Categories'
 import { Products } from '@/payload/collections/Products'
