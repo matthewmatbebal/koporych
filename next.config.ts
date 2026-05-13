@@ -15,7 +15,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '*.up.railway.app',
+        hostname: 'koporych.ru',
+      },
+      {
+        protocol: 'http',
+        hostname: 'koporych.ru',
       },
     ],
   },
