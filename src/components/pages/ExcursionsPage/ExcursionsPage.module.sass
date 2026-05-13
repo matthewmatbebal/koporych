@@ -4,6 +4,9 @@
 .page
   padding-bottom: var(--space-16)
 
+  @media (max-width: vars.$pre-mobile)
+    padding-bottom: var(--space-6)
+
 // ─── Заглавный блок ───────────────────────────────────────
 .intro
   @include mixins.container
@@ -17,7 +20,7 @@
     display: flex
     flex-direction: column
     gap: var(--space-6)
-    padding: var(--space-8) 0
+    padding: var(--space-6) 0 var(--space-12)
 
 .introPhoto
   position: relative
@@ -56,6 +59,10 @@
   flex-direction: column
   gap: var(--space-16)
   padding-bottom: var(--space-8)
+
+  @media (max-width: vars.$pre-mobile)
+    gap: var(--space-8)
+    padding-bottom: 0
 
 .event
   display: grid

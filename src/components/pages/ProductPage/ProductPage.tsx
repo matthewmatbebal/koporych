@@ -19,7 +19,10 @@ export async function ProductPage({ slug }: { slug: string }) {
 
   if (!product) notFound()
 
-  const related = allProducts.filter(p => p.slug !== slug).slice(0, 3)
+  const related = allProducts
+    .filter(p => p.slug !== slug)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 3)
 
   return (
     <div className={styles.page}>
@@ -35,8 +38,8 @@ export async function ProductPage({ slug }: { slug: string }) {
       <div className={styles.product}>
         <ProductGallery images={product.images} alt={product.name} />
         <div className={styles.info}>
-          <h1>{product.name}</h1>
-          <p>{product.description}</p>
+          <div  className={styles.title}>{product.name}</div>
+          <div className={styles.description}>{product.description}</div>
           <p className={styles.weight}>Вес: {product.weight}</p>
           <p className={styles.price}>{product.price}</p>
           <AddToCartButton product={product} />

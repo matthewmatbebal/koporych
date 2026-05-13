@@ -8,6 +8,10 @@
   flex-direction: column
   gap: var(--space-8)
 
+  @media (max-width: vars.$pre-mobile)
+    padding: var(--space-6) 0
+    gap: var(--space-6)
+
 .wrapper
   display: grid
   grid-template-columns: 1fr 1fr
@@ -34,7 +38,7 @@
   padding: var(--space-16) 0
 
   @media (max-width: vars.$pre-mobile)
-    padding: 0 0 var(--space-16)
+    padding: 0 0 var(--space-6)
 
 .list
   display: flex
