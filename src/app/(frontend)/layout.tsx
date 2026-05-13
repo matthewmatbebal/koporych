@@ -6,6 +6,7 @@ import { Header } from '@/components/layout/Header/Header'
 import { Footer } from '@/components/layout/Footer/Footer'
 import { getSiteData, getExcursionsPage } from '@/lib/payload/globals'
 import { SITE } from '@/lib/mock/site'
+import { YandexMetrika } from '@/components/YandexMetrika'
 import './globals.sass'
 
 const mPlus1p = M_PLUS_1p({
@@ -35,6 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Header nav={nav} phone={siteData.contacts.phone} phoneHref={siteData.contacts.phoneHref} />
         <main>{children}</main>
         <Footer nav={nav} siteData={siteData} />
+        <YandexMetrika />
       </body>
     </html>
   )
