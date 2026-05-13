@@ -33,6 +33,9 @@ interface CartStore {
   lastOrder: LastOrder | null
   setLastOrder: (order: LastOrder) => void
   clearLastOrder: () => void
+
+  _hasHydrated: boolean
+  setHasHydrated: (value: boolean) => void
 }
 
 export const useCartStore = create<CartStore>()(
@@ -70,10 +73,16 @@ export const useCartStore = create<CartStore>()(
       lastOrder: null,
       setLastOrder: (order) => set({ lastOrder: order }),
       clearLastOrder: () => set({ lastOrder: null }),
+
+      _hasHydrated: false,
+      setHasHydrated: (value) => set({ _hasHydrated: value }),
     }),
     {
       name: 'koporych-cart',
       partialize: (state) => ({ items: state.items }),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
+      },
     }
   )
 )

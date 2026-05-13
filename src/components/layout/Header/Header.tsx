@@ -38,6 +38,7 @@ export function Header({ nav, phone, phoneHref }: HeaderProps) {
     const [searchOpen, setSearchOpen] = useState(false)
     const cartWrapRef = useRef<HTMLDivElement>(null)
     const cartCount = useCartStore(state => state.totalCount())
+    const cartHydrated = useCartStore(state => state._hasHydrated)
 
     useEffect(() => {
         function onScroll() {
@@ -108,7 +109,7 @@ export function Header({ nav, phone, phoneHref }: HeaderProps) {
                             onClick={handleCartClick}
                         >
                             <CartIcon />
-                            <span className={styles.cartCount} suppressHydrationWarning>{cartCount}</span>
+                            <span className={styles.cartCount}>{cartHydrated ? cartCount : 0}</span>
                         </button>
                         <div className={cn(styles.cartPopup, { [styles.cartPopupOpen]: popupOpen })}>
                             <span className={styles.cartPopupText}>Корзина пуста</span>

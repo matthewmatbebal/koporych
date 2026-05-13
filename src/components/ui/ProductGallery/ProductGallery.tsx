@@ -19,7 +19,7 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
     const swiperRef = useRef<SwiperClass | null>(null)
 
     return (
-        <div className={styles.gallery}>
+        <div className={`${styles.gallery} ${images.length === 1 ? styles.gallerySingle : ''}`}>
             {/* THUMBS (LEFT) */}
             {images.length > 1 && (
                 <div className={styles.thumbsList}>
@@ -62,8 +62,8 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
                     </SwiperSlide>
                 ))}
 
-                <button className={styles.navPrev}>‹</button>
-                <button className={styles.navNext}>›</button>
+                {images.length > 1 && <button className={styles.navPrev}>‹</button>}
+                {images.length > 1 && <button className={styles.navNext}>›</button>}
             </Swiper>
 
             {/* LIGHTBOX */}
