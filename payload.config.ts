@@ -9,6 +9,7 @@ import { migrations } from '@/migrations/index'
 import { Media } from '@/payload/collections/Media'
 import { Categories } from '@/payload/collections/Categories'
 import { Products } from '@/payload/collections/Products'
+import { Users } from '@/payload/collections/Users'
 
 import { SiteSettings } from '@/payload/globals/SiteSettings'
 import { HomePageGlobal } from '@/payload/globals/HomePage'
@@ -24,7 +25,7 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
   editor: lexicalEditor(),
-  collections: [Media, Categories, Products],
+  collections: [Media, Categories, Products, Users],
   globals: [
     SiteSettings,
     HomePageGlobal,
