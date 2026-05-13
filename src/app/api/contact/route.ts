@@ -24,8 +24,8 @@ export async function POST(req: Request) {
 
     const transportOptions: SMTPTransport.Options & { family?: number } = {
       host: 'smtp.yandex.ru',
-      port: 587,
-      secure: false,
+      port: 465,
+      secure: true,
       family: 4,
       auth: { user: smtpUser, pass: smtpPass },
       connectionTimeout: 10000,
