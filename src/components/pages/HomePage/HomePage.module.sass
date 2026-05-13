@@ -145,11 +145,66 @@
   text-transform: uppercase
   color: var(--color-text-muted)
 
-// ─── Партнёры (скрыто) ───────────────────────────────
-.sectionMuted
+// ─── Партнёры ────────────────────────────────────────
+.partners
+  background: var(--color-surface)
+  padding: var(--space-12) 0
+
+  @media (max-width: vars.$pre-mobile)
+    padding: var(--space-8) 0
+
+.partnersInner
   @include mixins.container
-  padding-bottom: var(--space-16)
-  opacity: 0.35
-  border: 1.5px dashed var(--color-border)
-  margin: 0 auto
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: var(--space-6)
+
+.partnersLabel
+  font-size: var(--text-small)
+  letter-spacing: 0.15em
+  text-transform: uppercase
+  color: var(--color-text-muted)
+
+.partnersRow
+  display: flex
+  align-items: center
+  justify-content: space-evenly
   width: 100%
+  flex-wrap: wrap
+  gap: var(--space-4) 0
+
+.partnerItem
+  flex: 1 1 0
+  min-width: 120px
+  max-width: 220px
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 80px
+  padding: 0 var(--space-6)
+  text-decoration: none
+
+  @media (max-width: vars.$pre-mobile)
+    width: 100%
+    flex: none
+    max-width: 100%
+    height: auto
+    aspect-ratio: 3 / 1
+    padding: var(--space-3) var(--space-8)
+    border-bottom: 1px solid var(--color-border)
+
+    &:last-child
+      border-bottom: none
+
+.partnerLogo
+  width: 100%
+  height: 100%
+  object-fit: contain
+  filter: grayscale(100%)
+  opacity: 0.55
+  transition: opacity 0.2s, filter 0.2s
+
+  .partnerItem:hover &
+    opacity: 1
+    filter: grayscale(0%)

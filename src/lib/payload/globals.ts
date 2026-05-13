@@ -41,7 +41,7 @@ export interface HomePageData {
   hero: { image: string; title: string; buttonText: string; buttonHref: string }
   aboutPreview: { image: string; eyebrow: string; title: string; text: string; buttonText: string; buttonHref: string }
   featured: { title: string; catalogLink: string }
-  partners: { enabled: boolean }
+  partners: { enabled: boolean; items: { name: string; logo: string; url: string }[] }
 }
 
 export interface AboutPageData {
@@ -135,12 +135,21 @@ export async function getHomePage(isMobile = false): Promise<HomePageData> {
     hero: HOME_PAGE.hero,
     aboutPreview: HOME_PAGE.aboutPreview,
     featured: { title: HOME_PAGE.featured.title, catalogLink: HOME_PAGE.featured.catalogLink },
-    partners: { enabled: false },
+    partners: {
+      enabled: true,
+      items: [
+        { name: 'Партнёр 1', logo: '/images/logo.svg', url: '' },
+        { name: 'Партнёр 2', logo: '/images/about-main.png', url: '' },
+        { name: 'Партнёр 3', logo: '/images/logo-bold.svg', url: '' },
+        { name: 'Партнёр 4', logo: '/images/grass.jpg', url: '' },
+        { name: 'Партнёр 5', logo: '/images/pyramids.jpg', url: '' },
+      ],
+    },
   }
 
   try {
     const payload = await getPayloadClient()
-    const data = await payload.findGlobal({ slug: 'home-page', depth: 1 })
+    const data = await payload.findGlobal({ slug: 'home-page', depth: 2 })
 
     if (!data.hero?.title) return fallback
 
@@ -165,6 +174,11 @@ export async function getHomePage(isMobile = false): Promise<HomePageData> {
       },
       partners: {
         enabled: data.partners?.enabled === true,
+        items: (data.partners?.items ?? []).map((item: any) => ({
+          name: str(item.name, ''),
+          logo: mediaUrl(item.logo),
+          url: str(item.url, ''),
+        })),
       },
     }
   } catch {

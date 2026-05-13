@@ -44,9 +44,24 @@ export async function HomePage() {
       </section>
 
       {partners.enabled && (
-        <div className={styles.sectionMuted}>
-          <p>С нами сотрудничают — логотипы партнёров</p>
-        </div>
+        <section className={styles.partners}>
+          <div className={styles.partnersInner}>
+            <p className={styles.partnersLabel}>Нам доверяют</p>
+            <div className={styles.partnersRow}>
+              {partners.items.map((p, i) =>
+                p.url ? (
+                  <a key={i} href={p.url} className={styles.partnerItem} target="_blank" rel="noopener noreferrer" aria-label={p.name}>
+                    {p.logo && <Image src={p.logo} alt={p.name} width={160} height={56} className={styles.partnerLogo} />}
+                  </a>
+                ) : (
+                  <div key={i} className={styles.partnerItem} aria-label={p.name}>
+                    {p.logo && <Image src={p.logo} alt={p.name} width={160} height={56} className={styles.partnerLogo} />}
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        </section>
       )}
 
     </div>
