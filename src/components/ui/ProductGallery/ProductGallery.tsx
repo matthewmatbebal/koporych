@@ -21,17 +21,19 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
     return (
         <div className={styles.gallery}>
             {/* THUMBS (LEFT) */}
-            <div className={styles.thumbsList}>
-                {images.map((src, i) => (
-                    <div
-                        key={src}
-                        className={`${styles.thumb} ${i === activeIndex ? styles.thumbActive : ''}`}
-                        onClick={() => swiperRef.current?.slideTo(i)}
-                    >
-                        <Image src={src} alt="" fill style={{ objectFit: 'cover' }} />
-                    </div>
-                ))}
-            </div>
+            {images.length > 1 && (
+                <div className={styles.thumbsList}>
+                    {images.map((src, i) => (
+                        <div
+                            key={src}
+                            className={`${styles.thumb} ${i === activeIndex ? styles.thumbActive : ''}`}
+                            onClick={() => swiperRef.current?.slideTo(i)}
+                        >
+                            <Image src={src} alt="" fill style={{ objectFit: 'cover' }} />
+                        </div>
+                    ))}
+                </div>
+            )}
 
             {/* MAIN (RIGHT) */}
             <Swiper

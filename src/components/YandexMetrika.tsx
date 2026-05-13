@@ -2,24 +2,33 @@
 
 import Script from 'next/script'
 import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 const YM_ID = 109184312
 
 declare global {
   interface Window {
-    ym?: (id: number, action: string, ...args: unknown[]) => void
+    ym?: unknown
     dataLayer?: unknown[]
+  }
+}
+
+function ymCall(action: string, ...args: unknown[]) {
+  if (typeof window.ym === 'function') {
+    window.ym(YM_ID, action, ...args)
   }
 }
 
 function YandexMetrikaHit() {
   const pathname = usePathname()
+  const mounted = useRef(false)
 
   useEffect(() => {
-    window.ym?.(YM_ID, 'hit', window.location.href, {
-      referrer: document.referrer,
-    })
+    if (!mounted.current) {
+      mounted.current = true
+      return
+    }
+    ymCall('hit', window.location.href, { referrer: document.referrer })
   }, [pathname])
 
   return null
@@ -28,15 +37,21 @@ function YandexMetrikaHit() {
 export function YandexMetrika() {
   return (
     <>
-      <Script id="ym" strategy="afterInteractive">{`
-        (function(m,e,t,r,i,k,a){
-          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=${YM_ID}', 'ym');
-        ym(${YM_ID}, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-      `}</Script>
+      <Script
+        id="ym"
+        src={`https://mc.yandex.ru/metrika/tag.js?id=${YM_ID}`}
+        strategy="afterInteractive"
+        onReady={() => ymCall('init', {
+          ssr: true,
+          webvisor: true,
+          clickmap: true,
+          ecommerce: 'dataLayer',
+          referrer: document.referrer,
+          url: location.href,
+          accurateTrackBounce: true,
+          trackLinks: true,
+        })}
+      />
       <noscript>
         <img src={`https://mc.yandex.ru/watch/${YM_ID}`} style={{position:'absolute',left:'-9999px'}} alt="" />
       </noscript>

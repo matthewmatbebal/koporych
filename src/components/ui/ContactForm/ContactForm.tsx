@@ -53,6 +53,7 @@ export function ContactForm({ title, subtitle, contacts = 'default', contactData
       })
       if (!res.ok) throw new Error()
       setSent(true)
+      if (typeof window.ym === 'function') window.ym(109184312, 'reachGoal', 'form_submit')
     } catch {
       setSubmitError('Что-то пошло не так. Попробуйте ещё раз или напишите нам напрямую.')
     } finally {

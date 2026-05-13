@@ -28,6 +28,7 @@ export function AddToCartButton({ product }: { product: Product }) {
       updateQuantity(cartItem.id, v)
     } else {
       addItem({ ...productData, quantity: v })
+      if (typeof window.ym === 'function') window.ym(109184312, 'reachGoal', 'cart_add')
     }
   }
 
@@ -36,7 +37,14 @@ export function AddToCartButton({ product }: { product: Product }) {
       <QuantityCounter value={qty} onChange={handleCounterChange} />
       <button
         className={cn('btn', 'btn-outline', styles.btn)}
-        onClick={() => qty > 0 ? removeItem(productData.id) : addItem({ ...productData, quantity: 1 })}
+        onClick={() => {
+          if (qty > 0) {
+            removeItem(productData.id)
+          } else {
+            addItem({ ...productData, quantity: 1 })
+            if (typeof window.ym === 'function') window.ym(109184312, 'reachGoal', 'cart_add')
+          }
+        }}
       >
         {qty > 0 ? 'Убрать из корзины' : 'Добавить в корзину'}
       </button>
