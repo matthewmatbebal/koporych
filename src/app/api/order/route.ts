@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
-import type SMTPTransport from 'nodemailer/lib/smtp-transport'
+import { sendEmail } from '@/lib/sendpulse'
 
 interface CartItem {
   id: string
@@ -112,37 +111,24 @@ export async function POST(req: Request) {
     const order: OrderBody = await req.json()
     const orderNumber = generateOrderNumber()
 
-    const smtpUser = process.env.SMTP_USER
-    const smtpPass = process.env.SMTP_PASS
+    const smtpFrom = process.env.SMTP_FROM
     const smtpTo = process.env.SMTP_TO
 
-    if (!smtpUser || !smtpPass || !smtpTo) {
-      console.error('SMTP env vars not configured')
+    if (!smtpFrom || !smtpTo || !process.env.BREVO_API_KEY) {
+      console.error('Brevo env vars not configured')
       return NextResponse.json({ success: false, error: 'Mail not configured' }, { status: 500 })
     }
 
-    const transportOptions: SMTPTransport.Options & { family?: number } = {
-      host: 'smtp.yandex.ru',
-      port: 465,
-      secure: true,
-      family: 4,
-      auth: { user: smtpUser, pass: smtpPass },
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 15000,
-    }
-    const transporter = nodemailer.createTransport(transportOptions)
-
-    await transporter.sendMail({
-      from: `"Копорыч — заказы" <${smtpUser}>`,
-      to: smtpTo,
+    await sendEmail({
+      from: { name: 'Копорыч — заказы', email: smtpFrom },
+      to: { email: smtpTo },
       subject: `Новый заказ ${orderNumber} от ${order.customer.name}`,
       html: ownerHtml(order, orderNumber),
     })
 
-    await transporter.sendMail({
-      from: `"Копорыч" <${smtpUser}>`,
-      to: order.customer.email,
+    await sendEmail({
+      from: { name: 'Копорыч', email: smtpFrom },
+      to: { name: order.customer.name, email: order.customer.email },
       subject: `Заказ ${orderNumber} принят — Копорыч`,
       html: customerHtml(order, orderNumber),
     })

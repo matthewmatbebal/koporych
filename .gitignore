@@ -51,3 +51,4 @@ database.db
 database.db-shm
 database.db-wal
 payload-types.ts
+.aider*
