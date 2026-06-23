@@ -41,7 +41,13 @@ export function Footer({ nav, siteData }: FooterProps) {
                     </div>
                 </div>
                 <div className={styles.bottom}>
-                    <p>{siteData.footer.copyright}</p>
+                    <div className={styles.bottomLeft}>
+                        <p>{siteData.footer.copyright}</p>
+                        <div className={styles.legal}>
+                            <a href="/docs/privacy-policy.pdf" target="_blank" rel="noopener noreferrer" className={styles.legalLink}>Политика конфиденциальности</a>
+                            <a href="/docs/personal-data-policy.pdf" target="_blank" rel="noopener noreferrer" className={styles.legalLink}>Политика обработки персональных данных</a>
+                        </div>
+                    </div>
                     <div className={styles.socials}>
                         <a href={siteData.socials.vk.url} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>{siteData.socials.vk.label}</a>
                         <a href={siteData.socials.telegram.url} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>{siteData.socials.telegram.label}</a>

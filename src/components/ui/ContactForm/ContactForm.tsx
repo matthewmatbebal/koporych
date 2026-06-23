@@ -21,6 +21,8 @@ export function ContactForm({ title, subtitle, contacts = 'default', contactData
   const [phoneVal, setPhoneVal] = useState('')
   const [emailVal, setEmailVal] = useState('')
   const [message, setMessage] = useState('')
+  const [agreePersonal, setAgreePersonal] = useState(false)
+  const [agreePrivacy, setAgreePrivacy] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitting, setSubmitting] = useState(false)
   const [sent, setSent] = useState(false)
@@ -32,6 +34,8 @@ export function ContactForm({ title, subtitle, contacts = 'default', contactData
     if (!phoneVal.trim() || !/^[\d\s\-\+\(\)]{7,}$/.test(phoneVal)) e.phone = 'Укажите корректный телефон'
     if (!emailVal.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) e.email = 'Укажите корректный e-mail'
     if (!message.trim()) e.message = 'Напишите ваш вопрос'
+    if (!agreePersonal) e.agreePersonal = 'Необходимо ваше согласие'
+    if (!agreePrivacy) e.agreePrivacy = 'Необходимо ваше согласие'
     return e
   }
 
@@ -137,6 +141,28 @@ export function ContactForm({ title, subtitle, contacts = 'default', contactData
                 <span className={styles.label}>Ваш вопрос</span>
                 {errors.message && <span className={styles.fieldError}>{errors.message}</span>}
               </label>
+              <div className={styles.checkboxField}>
+                <label className={styles.checkbox}>
+                  <input
+                    type="checkbox"
+                    checked={agreePersonal}
+                    onChange={e => setAgreePersonal(e.target.checked)}
+                  />
+                  <span>Я прочитал(а) и согласен(на) с <a href="/docs/personal-data-policy.pdf" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>политикой обработки персональных данных</a></span>
+                </label>
+                {errors.agreePersonal && <span className={styles.fieldError}>{errors.agreePersonal}</span>}
+              </div>
+              <div className={styles.checkboxField}>
+                <label className={styles.checkbox}>
+                  <input
+                    type="checkbox"
+                    checked={agreePrivacy}
+                    onChange={e => setAgreePrivacy(e.target.checked)}
+                  />
+                  <span>Я прочитал(а) и согласен(на) с <a href="/docs/privacy-policy.pdf" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>политикой конфиденциальности</a></span>
+                </label>
+                {errors.agreePrivacy && <span className={styles.fieldError}>{errors.agreePrivacy}</span>}
+              </div>
               {submitError && <p className={styles.submitError}>{submitError}</p>}
               {sent && <Toast message="Заявка отправлена! Мы свяжемся с вами в ближайшее время." onDone={() => setSent(false)} />}
               <button

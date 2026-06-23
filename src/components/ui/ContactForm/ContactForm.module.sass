@@ -157,6 +157,44 @@
 .fieldTextarea .input:not(:placeholder-shown) ~ .label
   top: var(--space-2)
 
+.checkboxField
+  display: flex
+  flex-direction: column
+  gap: 2px
+  margin-top: var(--space-2)
+
+.checkbox
+  display: flex
+  align-items: center
+  gap: var(--space-3)
+  cursor: pointer
+  font-size: var(--text-small)
+  color: var(--color-text-muted)
+  line-height: 1.5
+
+  // Сброс глобального input-стиля (globals.sass) — возвращаем нативный чекбокс
+  input[type="checkbox"]
+    appearance: auto
+    -webkit-appearance: checkbox
+    flex-shrink: 0
+    width: 18px
+    height: 18px
+    min-width: 18px
+    padding: 0
+    margin: 0
+    border: none
+    border-radius: 0
+    background: none
+    accent-color: var(--color-accent)
+    cursor: pointer
+
+  a
+    color: var(--color-accent)
+    text-decoration: underline
+
+    &:hover
+      opacity: 0.8
+
 .submit
   width: 100%
   margin-top: var(--space-4)
