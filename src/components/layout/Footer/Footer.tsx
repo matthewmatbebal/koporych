@@ -44,8 +44,8 @@ export function Footer({ nav, siteData }: FooterProps) {
                     <div className={styles.bottomLeft}>
                         <p>{siteData.footer.copyright}</p>
                         <div className={styles.legal}>
-                            <a href="/docs/privacy-policy.pdf" target="_blank" rel="noopener noreferrer" className={styles.legalLink}>Политика конфиденциальности</a>
-                            <a href="/docs/personal-data-policy.pdf" target="_blank" rel="noopener noreferrer" className={styles.legalLink}>Политика обработки персональных данных</a>
+                            <a href="/privacy" target="_blank" rel="noopener noreferrer" className={styles.legalLink}>Политика конфиденциальности</a>
+                            <a href="/personal-data-agreement" target="_blank" rel="noopener noreferrer" className={styles.legalLink}>Политика обработки персональных данных</a>
                         </div>
                     </div>
                     <div className={styles.socials}>

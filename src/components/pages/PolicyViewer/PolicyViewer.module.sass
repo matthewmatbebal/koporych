@@ -1,0 +1,23 @@
+@use "@/styles/variables" as vars
+
+.root
+  display: flex
+  flex-direction: column
+
+.frame
+  width: 100%
+  height: calc(100vh - 64px)
+  border: none
+
+  @media (max-width: vars.$pre-mobile)
+    height: calc(100vh - 64px)
+
+.fallback
+  padding: var(--space-4)
+  font-size: var(--text-small)
+  color: var(--color-text-muted)
+  text-align: center
+
+  a
+    color: var(--color-accent)
+    text-decoration: underline

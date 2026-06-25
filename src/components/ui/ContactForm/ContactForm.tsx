@@ -148,7 +148,7 @@ export function ContactForm({ title, subtitle, contacts = 'default', contactData
                     checked={agreePersonal}
                     onChange={e => setAgreePersonal(e.target.checked)}
                   />
-                  <span>Я прочитал(а) и согласен(на) с <a href="/docs/personal-data-policy.pdf" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>политикой обработки персональных данных</a></span>
+                  <span>Я прочитал(а) и согласен(на) с <a href="/personal-data-agreement" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>политикой обработки персональных данных</a></span>
                 </label>
                 {errors.agreePersonal && <span className={styles.fieldError}>{errors.agreePersonal}</span>}
               </div>
@@ -159,7 +159,7 @@ export function ContactForm({ title, subtitle, contacts = 'default', contactData
                     checked={agreePrivacy}
                     onChange={e => setAgreePrivacy(e.target.checked)}
                   />
-                  <span>Я прочитал(а) и согласен(на) с <a href="/docs/privacy-policy.pdf" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>политикой конфиденциальности</a></span>
+                  <span>Я прочитал(а) и согласен(на) с <a href="/privacy" target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>политикой конфиденциальности</a></span>
                 </label>
                 {errors.agreePrivacy && <span className={styles.fieldError}>{errors.agreePrivacy}</span>}
               </div>
